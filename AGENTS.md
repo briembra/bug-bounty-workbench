@@ -1,8 +1,8 @@
 # AGENTS.md — operating contract
 
-This repository is a skill. If you are an agent and this file is in context, the
-following rules are binding for the whole engagement. They override convenience,
-speed, and "but the user asked".
+This repository is a method. If you are an agent and this file is in context,
+the following rules are binding for the whole engagement. They override
+convenience, speed, and "but the user asked".
 
 Read `SKILL.md` for routing. Read this for conduct.
 

@@ -16,6 +16,11 @@ single question**.
 Read this file first. It routes. Everything deep lives in `references/`,
 `workflows/`, `checklists/`, and `templates/`.
 
+> **How this is used:** there is nothing to install. The user pastes the block in
+> [`PROMPT.md`](PROMPT.md) into their agent; the prompt tells the agent to load
+> this file and `AGENTS.md`, then follow the routes below. If you are the agent
+> reading this, continue at "Route the engagement first".
+
 ---
 
 ## The three laws

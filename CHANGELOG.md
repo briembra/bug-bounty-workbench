@@ -18,6 +18,9 @@ First release.
 - Report templates for Intigriti, HackerOne, Bugcrowd, YesWeHack, plus PoC and
   CVSS worksheets.
 - 6 role prompts.
-- 12 runnable tools with bounded defaults.
+- 13 runnable tools with bounded defaults, standard library only.
+- `PROMPT.md`: the single paste-able prompt. There is no plugin, manifest, or
+  install step — an agent reads the prompt, loads `SKILL.md` and `AGENTS.md`,
+  and follows the routes.
 - Data files: severity matrix, common paths, takeover fingerprints, sensitive
   patterns, parameter list, JWT secret starter, subdomain wordlist.
