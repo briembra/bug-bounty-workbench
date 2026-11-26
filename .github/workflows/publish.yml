@@ -1,0 +1,37 @@
+name: publish
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://registry.npmjs.org
+
+      - name: Check the package installs
+        run: |
+          node --check bin/bbw.mjs
+          node --check lib/agents.mjs
+          node --check lib/install.mjs
+          node bin/bbw.mjs --version
+          node bin/bbw.mjs setup --agent claude --dry-run
+
+      - name: Verify links
+        run: python3 tools/check_links.py
+
+      - name: Publish
+        run: npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
