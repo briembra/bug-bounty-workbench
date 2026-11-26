@@ -1,5 +1,11 @@
 # Bug Bounty Workbench
 
+**Give this to your agent:**
+
+```
+Install this for me: https://github.com/briembra/bug-bounty-workbench
+```
+
 An agent skill for authorized bug bounty hunting — from picking a program to a
 report a triager accepts without asking a question.
 
@@ -8,22 +14,33 @@ Works in Claude Code, OpenCode, Codex, Cursor, or any agent that can read a file
 
 ---
 
-## Install
+## If you are the agent
 
-Into the agent you are running in — Node 18+, no dependencies:
-
-```bash
-npx bug-bounty-workbench setup
-```
-
-It detects Claude Code, OpenCode, Cursor or Codex from the project markers or the
-process environment, writes the 25 commands and the method into that agent's
-directories, and prints the one command to run next. Nothing else is touched.
-
-From this repository, before or without an npm release:
+Run this in the user's project directory:
 
 ```bash
 npx github:briembra/bug-bounty-workbench setup
+```
+
+It detects which agent it is running in, writes the 25 commands and the method
+into that agent's directories, and prints the next step. Then read `SKILL.md`
+(router) and `AGENTS.md` (binding conduct) before touching any target.
+
+If `npx` is unavailable: read `SKILL.md` and `AGENTS.md` from this repository,
+treat `commands/*.md` as procedures, and tell the user which path you took.
+
+Then report in three lines — commands installed, method loaded, waiting for a
+program, a platform and a target — and stop.
+
+---
+
+## Install
+
+Node 18+, no dependencies:
+
+```bash
+npx github:briembra/bug-bounty-workbench setup   # from this repository
+npx bug-bounty-workbench setup                   # once published to npm
 ```
 
 Other shapes:
@@ -35,8 +52,7 @@ npx bug-bounty-workbench status                          # what is installed
 npx bug-bounty-workbench uninstall                       # remove what setup wrote
 ```
 
-No Node? Paste the block in [`PROMPT.md`](PROMPT.md) and the agent installs
-itself. Per-agent detail, plugin installs and the Python path:
+Per-agent detail, the Claude Code plugin, the Python path and uninstall:
 [`INSTALL.md`](INSTALL.md).
 
 ---
