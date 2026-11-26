@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.3.2 — 2026-11-26
+
+Say less.
+
+- `AGENTS.md` §5 is now a binding brevity contract: answer first, no preamble,
+  three lines for a status, four for a finding, no recap, plain words, match the
+  user's language, stop when done.
+- `SKILL.md` gains **How to talk** with the same rules in short form.
+- `commands/README.md` states the reporting shape once for all 25 commands.
+- Platform reports are explicitly exempt: short for the user, complete for the
+  triager.
+
 ## 1.3.1 — 2026-11-26
 
 Freshness, in the program-selection path.

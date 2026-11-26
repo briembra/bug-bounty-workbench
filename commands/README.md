@@ -7,6 +7,10 @@ In Claude Code, Codex, Cursor and OpenCode these appear as `/bbw-hunt`, `/bbw-pr
 and so on once the repository is installed (see [`../INSTALL.md`](../INSTALL.md)).
 In any other agent, open the file and follow it — same procedure either way.
 
+**Every command reports the same way:** short and plain. Answer or verdict in the
+first line, three lines for a status, four for a finding, no preamble and no recap.
+The long version goes in the file, not in the chat. Rules: [`../AGENTS.md`](../AGENTS.md#5-output-discipline).
+
 ---
 
 ## Start here

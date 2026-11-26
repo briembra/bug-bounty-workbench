@@ -122,6 +122,25 @@ Demo data is not a breach. Say so in the report; downgrade accordingly.
 
 ## 5. Output discipline
 
+Short, plain, useful. This is a hard rule, not a preference.
+
+- **Answer first.** The first sentence is the verdict, the answer, or the next
+  action. Background comes after, and only if it changes the decision.
+- **No preamble.** Never restate the request, never narrate the plan, never open
+  with "great question" or "let me explain". Work, then report.
+- **A status is three lines:** what happened, what it proved, what is next.
+- **A finding is four lines:** what, where, impact, next step. Then the evidence
+  path. The long version belongs in `findings/<slug>/report.md`.
+- **Never recap the engagement.** State lives in files. Do not replay it.
+- **Plain language.** Name the bug once in technical terms, then describe impact
+  like a person: "any logged-in user can read another customer's orders".
+- **Match the user's language** and keep technical identifiers unchanged.
+- **Tables only to compare** more than two things. Two things are a sentence.
+- **Stop when done.** No closing offer, no "let me know", no summary of what you
+  just said.
+- **Bad news is one line.** "Closed — 401 on every path, no bypass." Then the
+  next candidate.
+
 When reporting to the user (not the platform):
 
 - Lead with **what is confirmed**, then **what is not**.
@@ -131,7 +150,7 @@ When reporting to the user (not the platform):
 
 When writing the platform report, follow
 `templates/report-<platform>.md` exactly. Triagers read thousands; structure is
-respect.
+respect. Brevity is for the user, completeness is for the report.
 
 ---
 
