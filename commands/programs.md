@@ -46,9 +46,12 @@ direct-disclosure target.
 
 ## Step 2 — Score the candidates
 
-Rank with this, in order:
+Rank with this, in order. The first item decides most shortlists on its own,
+because on a four-year-old program the reachable bugs are already gone.
 
-1. **New or recently expanded scope** — untested surface, fewer duplicates.
+1. **Surface age** — score the *newest asset in scope*, not the program: under 3
+   months is 5, 3–6 is 4, 6–12 is 3, 12–24 is 1, older with thousands of resolved
+   reports is 0. Anything scoring 0 is skipped unless you have a real edge.
 2. **Bounty ≥ your floor**, and pays the classes you actually find.
 3. **Slow triage or huge resolved count** — deprioritise; likely mined out.
 4. **Exclusions** that kill your strengths (e.g. "no auth bugs", "no IDOR").
@@ -56,12 +59,15 @@ Rank with this, in order:
    because BOLA and logic bugs need two sessions.
 6. **Scope shape** — wildcard-heavy = more surface; one marketing site = dead end.
 
-Write the shortlist to `engagements/shortlist.md` as a table, top 5 only.
+Write the shortlist to `engagements/shortlist.md` as a table, top 5 only, with the
+surface-age score in its own column.
 
 ### If `--fresh`, look for new surface rather than new programs
 
-An established program that added something last month beats a program that
-launched last month: real bounty table, working triage, and the new asset had no
+Most bugs on a program open for years are already found. The default is the newest
+surface you can reach, either way: a program that launched last month with one
+marketing site is worse than a program from 2019 that shipped a new product last
+month, because the new product has a real payout table, working triage, and no
 reviewer. For each candidate, record what changed and when:
 
 | Signal | How to check |
@@ -76,7 +82,8 @@ reviewer. For each candidate, record what changed and when:
 | Deadline feature | tax season, enrolment window, Black Friday, elections |
 
 Score a candidate on **surface added in the last 90 days**, not on program age.
-The full reasoning, and where "new" lies to you, is `references/01`.
+The full reasoning, the scoring table and the mined-out skip list are in
+`references/01`.
 
 ## Step 3 — Pick one and hand off
 

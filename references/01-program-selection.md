@@ -57,13 +57,22 @@ available time.
 
 ## Freshness: hunt new surface, not new programs
 
-Age of program is a weak signal on its own. What predicts a find is **how recently
-the surface changed** and **whether the program pays for what you find there**.
+Most bugs on a program that has been open for four years are already found. Not
+all of them, but the ones you can reach in an evening are. So the default is:
+**hunt the newest surface you can find, and only go deep on something old when you
+have a specific edge.**
 
-The sweet spot is not the newest program on the platform. It is a program with a
-real bounty table and functioning triage where something was added recently —
-an acquired product, a new feature, a v2 API, a new app version. The flagship app
-may have 4,000 reports against it; the thing they shipped last month has twenty.
+Edges that justify an old target: you know the stack from work, you have source or
+a decompiled client, you have a test account the rest of the crowd does not, or the
+bug class is one you hunt better than the average participant.
+
+That is it. Otherwise, spend your time where nobody has looked yet.
+
+## What counts as new surface
+
+Program age is the wrong number. Scope-change age is the right one. A program
+launched in 2019 that shipped a new product last month is a better target than a
+program launched last month with one marketing site.
 
 | Signal | Where to look | Why it is fresh |
 |---|---|---|
@@ -81,7 +90,36 @@ may have 4,000 reports against it; the thing they shipped last month has twenty.
 `/bbw-scope`, then re-run it weekly and diff. Every added asset is a lead that
 costs you one command.
 
-**Where "new" lies to you:**
+## Score by months since the surface changed
+
+Use this instead of "program age" when ranking:
+
+| Last meaningful change | Score | Reading |
+|---|---|---|
+| Under 1 month | 5 | Land rush, but nothing is picked over yet |
+| 1–3 months | 5 | Best window: shipped, rarely tested |
+| 3–6 months | 4 | Still good; low-hanging gone, depth remains |
+| 6–12 months | 3 | Needs a class you are strong in |
+| 12–24 months | 1 | Only with an edge |
+| Over 24 months, thousands of resolved reports | 0 | Skip |
+
+Take the score of the **newest asset in scope**, not of the program. A mature
+program with a three-week-old acquisition scores 5 on that asset.
+
+## Programs that are already mined out
+
+Skip by default, unless you have one of the edges above:
+
+- Open 4+ years, 3,000+ resolved reports, no scope change in 12 months.
+- No new app release in 18 months on a program that is app-only.
+- Top payouts all for RCE, everything else excluded, and no source access.
+- Public writeups already cover the classes you hunt on that exact stack.
+
+That is not a judgement on the program. It is arithmetic: the crowd got there
+first, and your hours are better spent on an asset with forty reports instead of
+four thousand.
+
+## Where "new" lies to you
 
 - Brand-new programs often have a two-week land rush of obvious bugs, then silence,
   and a triage team still learning its own policy. Real payout table, unreliable
@@ -92,10 +130,14 @@ costs you one command.
 - Acquisitions are routinely excluded in writing. Read the exclusion list before
   you get excited about the shiny new domain.
 - A wildcard added with nothing resolving is enumeration cost, not surface.
+- An asset added to scope is not the same as an asset deployed. If it 404s, it is
+  not surface yet — note it and check again in a month.
 
-**Budget rule:** about 70% of your time on the newest surface of a program that
-pays, 30% on the flagship app where depth still wins. Between those two, some of
-your flagships come out of the diff.
+## Budget rule
+
+Default split: **90% on the newest surface, 10% on the flagship** where depth and
+your edge still pay. If nothing in scope has changed in a year, pick another
+program rather than grinding a mined-out app.
 
 ## Programs to skip
 

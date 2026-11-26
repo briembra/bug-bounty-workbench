@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.3.3 — 2026-11-26
+
+Default is the newest surface, not the flagship.
+
+- `references/01` now leads with the point that most bugs on an old program are
+  already found, and that going deep on an old target needs a named edge (stack
+  knowledge, source access, a test account nobody else has, a class you are
+  strong in).
+- New scoring table: **months since the surface changed** — under 3 months is 5,
+  3–6 is 4, 6–12 is 3, 12–24 is 1, older with thousands of resolved reports is 0
+  and skipped. Score the newest asset, not the program.
+- Explicit mined-out skip list (4+ years, 3,000+ resolved, no scope change in 12
+  months, no app release in 18 months).
+- `/bbw-programs` ranks surface age first as a hard gate and puts the score in its
+  own column on the shortlist.
+- `/bbw-hunt` gains **Step 0.5** — check how old the surface is before mapping,
+  and name the newest in-scope asset when the handed target is the old flagship.
+- Budget rule is now 90% newest surface / 10% flagship.
+
 ## 1.3.2 — 2026-11-26
 
 Say less.

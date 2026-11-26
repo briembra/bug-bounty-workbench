@@ -29,6 +29,18 @@ step of this, run on its own.
 
 Save to `engagements/<program>/scope.json` with `python tools/scope.py --file scope.txt`.
 
+## Step 0.5 — Check how old the surface is
+
+One question before the map: when did anything in this scope change?
+
+- Look for scope updates, acquisitions, new features, a v2 API, a recent app
+  release. Newest asset wins (`references/01`).
+- If the asset you were handed is the flagship and nothing in scope has changed in
+  over a year, say so in one line and name the newest in-scope asset instead —
+  that is where the reachable bugs are.
+- Freshness does not unlock anything out of scope. It only decides *where* inside
+  the scope you spend the first hour.
+
 ## Step 1 — Map before you test (20 min)
 
 - `curl -sD- https://<host>/`, `robots.txt`, `sitemap.xml`, `/.well-known/security.txt`
