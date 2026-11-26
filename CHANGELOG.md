@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.5 — 2026-11-26
+
+The standing check, everywhere.
+
+- Surface age and payout speed are no longer a step inside `/bbw-programs`. They
+  are a standing check applied to every target, in every command, before any
+  mapping or probing.
+- `SKILL.md` gains **The standing check** with the one-line format:
+  `Acme — surface age 5 (scope expanded 3 weeks ago) — median payout 18 days — starting on acme-new.com`
+- `AGENTS.md` §1 makes it binding under the authorization gate, including the rule
+  that a stale surface means naming the newest in-scope asset instead of grinding
+  the old flagship.
+- `commands/README.md` states it once for all 25 commands, including a target
+  dropped into chat with no command at all.
+
 ## 1.3.4 — 2026-11-26
 
 Payout speed is part of the ranking.

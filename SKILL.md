@@ -41,6 +41,31 @@ If a request conflicts with these, the laws win.
 
 ---
 
+## The standing check
+
+Every time a target enters the conversation — a URL, a host, a program, "hunt
+this" — two numbers come first, before any mapping or probing:
+
+1. **Surface age.** When did anything in this scope change? Score 0–5
+   (`references/01`). Under 3 months is where the bugs are.
+2. **Payout speed.** Median days from report to money, and whether anything was
+   paid recently. Under 30 days is good; over 60 is a warning about the whole
+   program.
+
+Say both in one line, then work:
+
+```
+Acme — surface age 5 (scope expanded 3 weeks ago) — median payout 18 days — starting on acme-new.com
+```
+
+If the surface is stale, name the newest in-scope asset instead of grinding the
+old one. If the payout is stale, say it once and keep hunting only if the user
+wants to. This applies to every command, not just `/bbw-programs`: `/bbw-hunt`,
+`/bbw-scope`, `/bbw-recon`, a class command, or a target dropped into chat with no
+command at all.
+
+---
+
 ## How to talk
 
 Short, plain, useful. The user came for a bug, not a briefing. These rules apply

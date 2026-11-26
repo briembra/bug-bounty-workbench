@@ -25,6 +25,23 @@ program page is allowed; guessing scope is not.
 unless listed. `example.com` does not include subdomains. A host on a different
 registrable domain is out of scope even if the program owns the brand.
 
+**Target triage runs every time, in every command.** Before mapping or probing
+anything, establish and state two numbers in one line:
+
+- **Surface age** — when did anything in this scope change? Score 0–5
+  (`references/01`): under 3 months is 5, 3–6 is 4, 6–12 is 3, 12–24 is 1, older
+  with thousands of resolved reports is 0.
+- **Payout speed** — median days from report to money, and whether anything was
+  paid recently. Under 30 days is good, over 60 is a warning about the program.
+
+```
+Acme — surface age 5 (scope expanded 3 weeks ago) — median payout 18 days — starting on acme-new.com
+```
+
+If the surface is stale, name the newest in-scope asset instead of grinding the
+old flagship. If the payout is stale, say it once. This is not a step in
+`/bbw-programs`; it is a standing check on every engagement.
+
 **Third-party rule.** Hosted platforms (Zendesk, Salesforce, Intercom, Shopify,
 Cloudflare) are third-party services. A misconfiguration *in the customer's
 tenant* can be in scope; the platform itself is out of scope unless the program

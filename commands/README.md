@@ -11,6 +11,11 @@ In any other agent, open the file and follow it — same procedure either way.
 first line, three lines for a status, four for a finding, no preamble and no recap.
 The long version goes in the file, not in the chat. Rules: [`../AGENTS.md`](../AGENTS.md#5-output-discipline).
 
+**Every command opens with the two numbers**, whatever the command is: surface age
+(0–5) and median payout days. One line, then work. If the surface is stale, name the
+newest in-scope asset. See [`../SKILL.md`](../SKILL.md#the-standing-check) and
+[`../references/01-program-selection.md`](../references/01-program-selection.md).
+
 ---
 
 ## Start here
