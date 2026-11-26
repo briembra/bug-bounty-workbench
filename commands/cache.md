@@ -4,14 +4,14 @@ argument-hint: <host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /cache
+# /bbw-cache
 
 `references/16`, `checklists/caching.md`.
 
 **Input:** `$ARGUMENTS` — host behind a CDN or reverse proxy.
 
 ```
-/cache https://app.acme.com
+/bbw-cache https://app.acme.com
 ```
 
 Two different bugs, often confused:
@@ -103,7 +103,7 @@ Only with accounts you own. Cache rules vary — test each suffix once.
 - `Cache-Control: public` on authenticated endpoints
 - `Set-Cookie` stored in a cached response → session fixation at scale
 - HTTP request smuggling (only if you can prove it safely; usually out of reward)
-- Host header injection into password-reset links → `/auth` reset poisoning
+- Host header injection into password-reset links → `/bbw-auth` reset poisoning
 - `X-Forwarded-Proto: http` downgrade on a redirect
 
 ## Step 6 — Prove safely
@@ -129,7 +129,7 @@ poisoned: yes/no   deception: yes/no
 impact: <xss | redirect | private-data>
 evidence: findings/<slug>/
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

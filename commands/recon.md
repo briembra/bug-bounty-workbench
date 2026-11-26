@@ -4,16 +4,16 @@ argument-hint: <program> [--active]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /recon
+# /bbw-recon
 
 Find the surface. Passive sources first, active only if the program allows it,
 always bounded.
 
-**Input:** `$ARGUMENTS` — program name from `/scope`, optional `--active`.
+**Input:** `$ARGUMENTS` — program name from `/bbw-scope`, optional `--active`.
 
 ```
-/recon acme
-/recon acme --active
+/bbw-recon acme
+/bbw-recon acme --active
 ```
 
 ---
@@ -51,7 +51,7 @@ python tools/probe.py engagements/<program>/subs.json \
 
 Defaults: 20 threads, 30 requests/second, 2000-host cap. Lower them if the rules
 are stricter. The output records status, title, server, redirect, tech guess and
-CNAME. `takeover_hint` flags third-party CNAMEs — feed those to `/takeover`.
+CNAME. `takeover_hint` flags third-party CNAMEs — feed those to `/bbw-takeover`.
 
 ## Step 4 — Bucket
 
@@ -90,8 +90,8 @@ python tools/unauth_json.py engagements/<program>/alive.json -o engagements/<pro
 ```
 
 Read every hit. Most are HTML error pages — the tool flags those. One real `.env`
-or one unauthenticated JSON collection is a finding; hand it to `/secrets` or
-`/api`.
+or one unauthenticated JSON collection is a finding; hand it to `/bbw-secrets` or
+`/bbw-api`.
 
 ---
 
@@ -102,7 +102,7 @@ domains: N   names: N   alive: N
 takeover candidates: N
 top bucket: <name> — <host>
 chosen target: <host>
-next: /surface
+next: /bbw-surface
 ```
 
 ## Stop conditions

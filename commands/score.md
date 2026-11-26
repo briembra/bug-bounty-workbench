@@ -4,7 +4,7 @@ argument-hint: <finding> or <cvss vector>
 allowed-tools: Bash, Read
 ---
 
-# /score
+# /bbw-score
 
 `references/20`, `data/severity-matrix.md`, `templates/cvss-worksheet.md`,
 `tools/cvss.py`.
@@ -12,8 +12,8 @@ allowed-tools: Bash, Read
 **Input:** `$ARGUMENTS` — a finding summary, or a vector you already built.
 
 ```
-/score "BOLA read on /api/orders/{id} — other customer's order incl. address+phone"
-/score "AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
+/bbw-score "BOLA read on /api/orders/{id} — other customer's order incl. address+phone"
+/bbw-score "AV:N/AC:L/PR:L/UI:N/S:C/C:H/I:N/A:N"
 ```
 
 Scoring is where good findings die. Two rules:
@@ -107,7 +107,7 @@ score: <n.n>  band: <Critical|High|Medium|Low>
 program table: <their band>
 downgrades applied: <list or none>
 impact: <one sentence>
-next: /report
+next: /bbw-report
 ```
 
 ## Stop conditions

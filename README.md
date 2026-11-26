@@ -48,9 +48,18 @@ Other shapes:
 ```bash
 npx bug-bounty-workbench setup --agent claude --global   # user-level dirs
 npx bug-bounty-workbench setup --dry-run                 # print the plan
+npx bug-bounty-workbench update                          # re-apply from this version
 npx bug-bounty-workbench status                          # what is installed
 npx bug-bounty-workbench uninstall                       # remove what setup wrote
 ```
+
+Commands install with a `bbw-` prefix, so typing `bbw` in your agent lists all
+25 of them: `/bbw-hunt`, `/bbw-programs`, `/bbw-scope`, `/bbw-recon`,
+`/bbw-surface`, `/bbw-idor`, `/bbw-auth`, `/bbw-ssrf`, `/bbw-xss`,
+`/bbw-injection`, `/bbw-files`, `/bbw-logic`, `/bbw-api`, `/bbw-graphql`,
+`/bbw-cloud`, `/bbw-secrets`, `/bbw-cache`, `/bbw-takeover`, `/bbw-mobile`,
+`/bbw-ai`, `/bbw-chain`, `/bbw-score`, `/bbw-report`, `/bbw-dedup`,
+`/bbw-submit`.
 
 Per-agent detail, the Claude Code plugin, the Python path and uninstall:
 [`INSTALL.md`](INSTALL.md).
@@ -60,7 +69,7 @@ Per-agent detail, the Claude Code plugin, the Python path and uninstall:
 ## Use
 
 ```
-/hunt https://app.example.com "Acme" on Intigriti
+/bbw-hunt https://app.example.com "Acme" on Intigriti
 ```
 
 That is the whole loop: scope gate, map the asset, pick one class by ceiling,
@@ -69,10 +78,10 @@ prove it with two accounts, score it honestly, write it, dedup it, submit it.
 Or drive the steps yourself:
 
 ```
-/programs          find programs worth hunting across every platform
-/scope             program page -> one verified scope file
-/recon             passive-first subdomain discovery, bounded
-/surface           map one host: actors, objects, flows, trust boundaries
+/bbw-programs          find programs worth hunting across every platform
+/bbw-scope             program page -> one verified scope file
+/bbw-recon             passive-first subdomain discovery, bounded
+/bbw-surface           map one host: actors, objects, flows, trust boundaries
 ```
 
 ---
@@ -81,31 +90,31 @@ Or drive the steps yourself:
 
 | Stage | Command | Purpose |
 |---|---|---|
-| Start | `/hunt` | Full loop on one target URL. |
-| Start | `/programs` | Search and rank bug bounty programs. |
-| Setup | `/scope` | Build and verify the scope file. |
-| Setup | `/recon` | Subdomain discovery and fingerprinting. |
-| Setup | `/surface` | Map one host before testing it. |
-| Hunt | `/idor` | Broken object-level authorization. |
-| Hunt | `/auth` | Auth, session, OAuth, JWT. |
-| Hunt | `/ssrf` | Server-side request forgery. |
-| Hunt | `/xss` | Reflected, stored, DOM, blind. |
-| Hunt | `/injection` | SQL, NoSQL, command, SSTI, XXE. |
-| Hunt | `/files` | Upload, traversal, storage ACLs. |
-| Hunt | `/logic` | Price, coupon, refund, quota, role. |
-| Hunt | `/api` | REST surface and authz gaps. |
-| Hunt | `/graphql` | Introspection and field-level authz. |
-| Hunt | `/cloud` | Buckets, metadata, CI/CD trust. |
-| Hunt | `/secrets` | Live secrets in JS and repos. |
-| Hunt | `/cache` | Cache poisoning and deception. |
-| Hunt | `/takeover` | Dangling CNAMEs. |
-| Hunt | `/mobile` | APK/IPA review. |
-| Hunt | `/ai` | Prompt injection, RAG, tool abuse. |
-| Finish | `/chain` | Link findings into a kill chain. |
-| Finish | `/score` | CVSS plus the program's own band. |
-| Finish | `/report` | Write the platform-ready report. |
-| Finish | `/dedup` | Check duplicates and prior art. |
-| Finish | `/submit` | Final gate before sending. |
+| Start | `/bbw-hunt` | Full loop on one target URL. |
+| Start | `/bbw-programs` | Search and rank bug bounty programs. |
+| Setup | `/bbw-scope` | Build and verify the scope file. |
+| Setup | `/bbw-recon` | Subdomain discovery and fingerprinting. |
+| Setup | `/bbw-surface` | Map one host before testing it. |
+| Hunt | `/bbw-idor` | Broken object-level authorization. |
+| Hunt | `/bbw-auth` | Auth, session, OAuth, JWT. |
+| Hunt | `/bbw-ssrf` | Server-side request forgery. |
+| Hunt | `/bbw-xss` | Reflected, stored, DOM, blind. |
+| Hunt | `/bbw-injection` | SQL, NoSQL, command, SSTI, XXE. |
+| Hunt | `/bbw-files` | Upload, traversal, storage ACLs. |
+| Hunt | `/bbw-logic` | Price, coupon, refund, quota, role. |
+| Hunt | `/bbw-api` | REST surface and authz gaps. |
+| Hunt | `/bbw-graphql` | Introspection and field-level authz. |
+| Hunt | `/bbw-cloud` | Buckets, metadata, CI/CD trust. |
+| Hunt | `/bbw-secrets` | Live secrets in JS and repos. |
+| Hunt | `/bbw-cache` | Cache poisoning and deception. |
+| Hunt | `/bbw-takeover` | Dangling CNAMEs. |
+| Hunt | `/bbw-mobile` | APK/IPA review. |
+| Hunt | `/bbw-ai` | Prompt injection, RAG, tool abuse. |
+| Finish | `/bbw-chain` | Link findings into a kill chain. |
+| Finish | `/bbw-score` | CVSS plus the program's own band. |
+| Finish | `/bbw-report` | Write the platform-ready report. |
+| Finish | `/bbw-dedup` | Check duplicates and prior art. |
+| Finish | `/bbw-submit` | Final gate before sending. |
 
 Full index with what each one covers: [`commands/README.md`](commands/README.md).
 

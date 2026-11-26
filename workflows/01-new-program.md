@@ -52,7 +52,7 @@ that in notes.
 Open `alive.json`. Bucket by signal:
 
 - 401/403 → auth exists
-- `/api`, `/graphql`, `/swagger` → API map
+- `/bbw-api`, `/bbw-graphql`, `/swagger` → API map
 - stage/dev/test in hostname → debug candidates
 - login/SSO → auth flows
 - admin panels → direct check
@@ -69,7 +69,7 @@ On the one host:
 - `GET /`, read the HTML.
 - Read `robots.txt`, `sitemap.xml`.
 - Download the main JS bundle, grep for `/api/`, `graphql`, base URLs.
-- Check `/openapi.json`, `/swagger.json`, `/graphql`.
+- Check `/openapi.json`, `/swagger.json`, `/bbw-graphql`.
 - Register or log in (test account if available).
 - Write the endpoint inventory to `endpoints.tsv`.
 

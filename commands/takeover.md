@@ -4,17 +4,17 @@ argument-hint: <host or subs.json>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /takeover
+# /bbw-takeover
 
 `references/17`, `workflows/10`, `checklists/takeover.md`,
 `data/takeover-fingerprints.txt`.
 
-**Input:** `$ARGUMENTS` — a host, or the `alive.json` from `/recon` with
+**Input:** `$ARGUMENTS` — a host, or the `alive.json` from `/bbw-recon` with
 `takeover_hint` set.
 
 ```
-/takeover https://dev.acme.com
-/takeover engagements/acme/alive.json
+/bbw-takeover https://dev.acme.com
+/bbw-takeover engagements/acme/alive.json
 ```
 
 The bug is a subdomain pointing at a service nobody owns any more. Claiming it is
@@ -114,7 +114,7 @@ claimed: yes/no — <host> — <service>
 marker: bbtest-<date>  released: yes/no
 evidence: findings/<slug>/
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

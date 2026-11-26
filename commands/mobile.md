@@ -4,7 +4,7 @@ argument-hint: <app name | ipa/apk path | mobile api host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /mobile
+# /bbw-mobile
 
 `references/18`.
 
@@ -12,9 +12,9 @@ allowed-tools: Bash, Read, Write, WebFetch
 talks to.
 
 ```
-/mobile com.acme.app
-/mobile ~/Downloads/acme.apk
-/mobile api.acme.com
+/bbw-mobile com.acme.app
+/bbw-mobile ~/Downloads/acme.apk
+/bbw-mobile api.acme.com
 ```
 
 The mobile app is usually the **weakest client**: older API version, debug flags,
@@ -35,7 +35,7 @@ unzip -o acme.ipa -d acme-ipa
 otool -L acme-ipa/Payload/Acme.app/Acme
 ```
 
-If you cannot obtain the binary, work from the network side: `/surface` on the
+If you cannot obtain the binary, work from the network side: `/bbw-surface` on the
 mobile API host.
 
 ## Step 2 — Grep for the good stuff
@@ -60,7 +60,7 @@ grep -rhoE 'https?://[a-z0-9.-]+/[a-z0-9/_{}-]*' acme-jadx/sources | sort -u
 ```
 
 Mobile APIs are commonly `/mobile/v1/`, `/app/`, `/rpc/`, with weaker auth checks.
-Run `/api` and `/idor` against them.
+Run `/bbw-api` and `/bbw-idor` against them.
 
 ## Step 4 — Storage and transport
 
@@ -108,8 +108,8 @@ Only on your device, with your accounts.
 
 ## Step 7 — What to report
 
-- Hardcoded server secret → same standard as `/secrets`
-- Mobile API IDOR → same standard as `/idor`
+- Hardcoded server secret → same standard as `/bbw-secrets`
+- Mobile API IDOR → same standard as `/bbw-idor`
 - Debuggable prod build → Low–Medium depending on data reachable
 - Deep link auth bypass → High
 - No certificate pinning alone → **not** a finding, note only
@@ -123,7 +123,7 @@ app: <name>   platform: android | ios
 endpoints: N   keys found: N (live: N)
 storage issues: <list>   deep links: N
 worst: <issue> — <what it allows>
-next: /idor or /secrets or /score
+next: /bbw-idor or /bbw-secrets or /bbw-score
 ```
 
 ## Stop conditions

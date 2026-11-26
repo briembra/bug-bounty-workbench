@@ -4,14 +4,14 @@ argument-hint: <slug> [platform]
 allowed-tools: Bash, Read, Write
 ---
 
-# /submit
+# /bbw-submit
 
 `checklists/submission.md`, `workflows/12`, `templates/report-*.md`.
 
 **Input:** `$ARGUMENTS` — the slug with a finished `report.md`.
 
 ```
-/submit orders-bola intigriti
+/bbw-submit orders-bola intigriti
 ```
 
 Nothing new is discovered here. This is the gate that stops a good finding going out
@@ -30,7 +30,7 @@ with a hole in it.
 - [ ] Remediation is specific and testable
 - [ ] Version, date and account roles are stated
 
-Any box empty → back to `/report`.
+Any box empty → back to `/bbw-report`.
 
 ## Step 2 — The evidence pack
 
@@ -56,7 +56,7 @@ Any box empty → back to `/report`.
 |---|---|
 | Title | from `report.md` |
 | Asset | exact in-scope entry, as the program listed it |
-| Severity | from `/score`, matching their band |
+| Severity | from `/bbw-score`, matching their band |
 | Weakness / CWE | best match; BOLA → CWE-639, SSRF → CWE-918 |
 | CVSS | vector or 0.0 if they use their own scale |
 | Description | summary + steps + impact + fix |

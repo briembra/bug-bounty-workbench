@@ -101,7 +101,7 @@ Bucket by signal, not by alphabet:
 | Bucket | Why |
 |---|---|
 | 401/403 on `/` | Auth exists → object ids, roles → BOLA candidates |
-| 200 on `/api`, `/graphql`, `/swagger`, `/openapi.json` | API map, often unauthenticated docs |
+| 200 on `/bbw-api`, `/bbw-graphql`, `/swagger`, `/openapi.json` | API map, often unauthenticated docs |
 | Stage/dev/test in hostname | Debug on, weak auth |
 | Login portals (SSO, Keycloak, Okta, Auth0, Azure AD) | Auth flows, redirect_uri, SAML |
 | Admin panels (Jenkins, GitLab, Grafana, Kibana, Jira, Confluence) | Direct HIGH if unauthenticated |
@@ -123,7 +123,7 @@ Only after you picked a target. Full method in
 - **`sitemap.xml`** — every public route, sometimes admin ones too.
 - **`/security.txt`** — contacts, and sometimes a scope clarification.
 - **JS bundles** — the real route list. See `14-secrets-and-js-analysis.md`.
-- **`/openapi.json` / `/swagger.json` / `/v2/api-docs` / `/graphql`** —
+- **`/openapi.json` / `/swagger.json` / `/v2/api-docs` / `/bbw-graphql`** —
   introspection. If docs are public, the API is a menu.
 - **Error pages** — stack traces, framework versions, debug modes.
 - **HTTP methods** — `OPTIONS *`, `TRACE`. Rarely a bug alone; occasionally a

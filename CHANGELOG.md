@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.0 — 2026-11-26
+
+`bbw-` prefix and `update`.
+
+- Every command installs as `bbw-<name>.md`, so typing `bbw` in the agent lists
+  all 25: `/bbw-hunt`, `/bbw-scope`, `/bbw-idor`, … Flat prefix rather than a
+  `bbw:` namespace because `:` is invalid in Windows filenames and every agent
+  accepts the flat form.
+- `npx bug-bounty-workbench update` re-applies every recorded install from the
+  version on disk, across both scopes, and removes files an earlier version
+  wrote that this one no longer produces — so the rename from `/hunt` to
+  `/bbw-hunt` cleans up after itself.
+- `update --dry-run`, `--json`, `--agent`, `--global` behave as in `setup`.
+- Install entries now record `version` and `previousVersion`.
+- `tools/sync_commands.py` writes the same prefixed filenames.
+
 ## 1.2.0 — 2026-11-26
 
 One-line install.

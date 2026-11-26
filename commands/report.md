@@ -4,7 +4,7 @@ argument-hint: <slug> [platform]
 allowed-tools: Bash, Read, Write
 ---
 
-# /report
+# /bbw-report
 
 `references/21`, `tools/report.py`, `templates/report-*.md`,
 `prompts/report-editor.md`.
@@ -12,8 +12,8 @@ allowed-tools: Bash, Read, Write
 **Input:** `$ARGUMENTS` — the finding slug under `findings/`, plus the platform.
 
 ```
-/report orders-bola intigriti
-/report reset-poisoning hackerone
+/bbw-report orders-bola intigriti
+/bbw-report reset-poisoning hackerone
 ```
 
 The triager reads hundreds. Structure is respect: title, impact, steps, evidence,
@@ -121,7 +121,7 @@ Run `checklists/submission.md` top to bottom. Common failures:
 - [ ] Impact is a class name, not a consequence
 - [ ] Evidence is a screenshot of a JSON blob with no request
 - [ ] The finding is on an excluded asset or excluded class
-- [ ] Duplicate of an existing report (run `/dedup` first)
+- [ ] Duplicate of an existing report (run `/bbw-dedup` first)
 - [ ] Version/date of testing missing
 
 ## Step 6 — Tone
@@ -134,7 +134,7 @@ Run `checklists/submission.md` top to bottom. Common failures:
 
 ## Step 7 — Save and hand off
 
-`findings/<slug>/report.md` is the artefact. `/dedup` next, then `/submit`.
+`findings/<slug>/report.md` is the artefact. `/bbw-dedup` next, then `/bbw-submit`.
 
 ---
 
@@ -146,7 +146,7 @@ platform: <name>
 title: <the final title>
 sections: summary | steps | evidence | impact | fix   all present
 checklist: pass | <n failures>
-next: /dedup then /submit
+next: /bbw-dedup then /bbw-submit
 ```
 
 ## Stop conditions

@@ -4,15 +4,15 @@ argument-hint: <slug or class + asset>
 allowed-tools: Bash, Read, WebFetch, WebSearch
 ---
 
-# /dedup
+# /bbw-dedup
 
 `references/22`, `workflows/13`, `prompts/dedup-analyst.md`.
 
 **Input:** `$ARGUMENTS` — the finding slug, or class + asset.
 
 ```
-/dedup orders-bola
-/dedup "cache poisoning app.example.com"
+/bbw-dedup orders-bola
+/bbw-dedup "cache poisoning app.example.com"
 ```
 
 A duplicate is not just unpaid — it burns triager patience. Five minutes here saves
@@ -94,7 +94,7 @@ checked: <sources>
 closest: <report id or none>
 verdict: distinct | partial-dup | duplicate | by-design
 argument: <one line if not distinct>
-next: /submit | drop
+next: /bbw-submit | drop
 ```
 
 ## Stop conditions

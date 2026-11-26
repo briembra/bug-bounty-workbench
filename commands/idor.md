@@ -4,7 +4,7 @@ argument-hint: <host or endpoint>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /idor
+# /bbw-idor
 
 The highest-yield class on the modern web. `references/06`, `workflows/03`,
 `checklists/idor.md`.
@@ -12,8 +12,8 @@ The highest-yield class on the modern web. `references/06`, `workflows/03`,
 **Input:** `$ARGUMENTS` — host or a specific endpoint family.
 
 ```
-/idor https://app.acme.com
-/idor "GET /api/orders/{id}"
+/bbw-idor https://app.acme.com
+/bbw-idor "GET /api/orders/{id}"
 ```
 
 ---
@@ -29,7 +29,7 @@ invite path — but try hard, because BOLA without a second account is a guess.
 
 ## Step 2 — Inventory every id-taking endpoint
 
-From `/surface` and the JS bundle:
+From `/bbw-surface` and the JS bundle:
 
 ```
 GET    /api/orders/{id}
@@ -111,7 +111,7 @@ endpoints tested: N   BOLA: N
 worst: <endpoint> — read|write — <fields exposed>
 evidence: findings/<slug>/
 severity: <band> (<vector>)
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

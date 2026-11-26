@@ -15,7 +15,7 @@ method directly if it has no shell.
 **After the install it says "Ready".** Then one command:
 
 ```
-/hunt https://app.example.com "Acme" on Intigriti
+/bbw-hunt https://app.example.com "Acme" on Intigriti
 ```
 
 **Optional additions** to the same prompt, if the agent asks for more:

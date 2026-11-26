@@ -53,8 +53,16 @@ Authorized bug bounty hunting, installed into your agent.
 
 Usage
   npx bug-bounty-workbench setup [options]     install commands + skill
+  npx bug-bounty-workbench update [options]    re-install from the current version
   npx bug-bounty-workbench status              show what is installed
   npx bug-bounty-workbench uninstall [options] remove what setup wrote
+
+Commands install with a bbw- prefix, so typing bbw in your agent lists all 25:
+  /bbw-hunt  /bbw-programs  /bbw-scope  /bbw-recon  /bbw-surface
+  /bbw-idor  /bbw-auth  /bbw-ssrf  /bbw-xss  /bbw-injection  /bbw-files
+  /bbw-logic  /bbw-api  /bbw-graphql  /bbw-cloud  /bbw-secrets  /bbw-cache
+  /bbw-takeover  /bbw-mobile  /bbw-ai  /bbw-chain  /bbw-score  /bbw-report
+  /bbw-dedup  /bbw-submit
 
 Options
   --agent=<name>   ${agentNames().join(' | ')}   (repeatable, comma-separated)
@@ -72,7 +80,7 @@ Nothing is installed outside these directories:
   codex     ~/.codex/prompts (global only)
 
 After installing, restart the agent and run:
-  /hunt https://app.example.com "Acme" on Intigriti`);
+  /bbw-hunt https://app.example.com "Acme" on Intigriti`);
 }
 
 function resolveScope(args, agent) {
@@ -145,8 +153,73 @@ function setup(args) {
 
   const first = AGENTS[results[0].agent];
   console.log(`${green('Done.')} ${first.hint}:`);
-  console.log(`  /hunt https://app.example.com "Acme" on Intigriti\n`);
+  console.log(`  /bbw-hunt https://app.example.com "Acme" on Intigriti\n`);
   console.log(dim(`Full index: ${path.join(ROOT, 'commands', 'README.md')}`));
+  return 0;
+}
+
+/**
+ * Re-apply every recorded install from the version now on disk.
+ *
+ * Reads the same manifests `setup` wrote, so it updates exactly the agents and
+ * scopes that exist — no re-detection, no guessing, no touching a project that
+ * never had an install. Files recorded by an earlier version but no longer
+ * produced are removed, which is what makes a command rename safe.
+ */
+function update(args) {
+  const home = os.homedir();
+  const cwd = process.cwd();
+  const scopes = args.global ? ['global'] : args.project ? ['project'] : ['project', 'global'];
+  const jobs = [];
+
+  for (const scope of scopes) {
+    const manifestFile = path.join(scope === 'global' ? home : cwd, '.bbw-manifest.json');
+    const record = readManifest(manifestFile);
+    if (!record) continue;
+    for (const entry of record.installs) {
+      if (args.agents.length && !args.agents.includes(entry.agent)) continue;
+      jobs.push({ scope, entry });
+    }
+  }
+
+  if (!jobs.length) {
+    const where = scopes.join(' or ');
+    console.error(
+      `${red('Nothing installed')} in ${where}. Run first:\n  npx ${PKG.name} setup${args.global ? ' --global' : ''}`,
+    );
+    return 1;
+  }
+
+  const results = [];
+  for (const { scope, entry } of jobs) {
+    const plan = planInstall({ agent: entry.agent, scope, root: ROOT, cwd, home });
+    const outcome = applyInstall(plan, { dryRun: args.dryRun });
+    results.push({ scope, agent: entry.agent, plan, outcome, from: entry.version ?? 'unknown' });
+  }
+
+  if (args.json) {
+    console.log(JSON.stringify({ version: PKG.version, results: results.map((r) => ({
+      agent: r.agent,
+      scope: r.scope,
+      from: r.from,
+      to: PKG.version,
+      files: r.outcome.files.length,
+      removed: r.outcome.removed?.length ?? 0,
+      dryRun: Boolean(args.dryRun),
+    })) }, null, 2));
+    return 0;
+  }
+
+  console.log(`${bold(`bug-bounty-workbench ${PKG.version}`)}  ${dim(args.dryRun ? 'update (dry run)' : 'update')}\n`);
+  for (const { scope, agent, outcome, from } of results) {
+    const spec = AGENTS[agent];
+    const moved = from === 'unknown' || from === PKG.version ? '' : `  ${dim(`${from} ->`)} ${PKG.version}`;
+    console.log(`${bold(spec.label)}  ${dim(scope)}${moved}`);
+    console.log(`  files        ${outcome.files.length} written${outcome.removed?.length ? `, ${outcome.removed.length} stale removed` : ''}`);
+    console.log(`  next         ${spec.hint}\n`);
+  }
+
+  console.log(dim(`Newer version available? npx ${PKG.name}@latest update`));
   return 0;
 }
 
@@ -236,6 +309,7 @@ if (args.help || args._[0] === 'help') {
 const command = args._[0] ?? 'setup';
 let code = 0;
 if (command === 'setup' || command === 'install') code = setup(args);
+else if (command === 'update' || command === 'upgrade') code = update(args);
 else if (command === 'status' || command === 'list') code = status(args);
 else if (command === 'uninstall' || command === 'remove') code = uninstall(args);
 else {

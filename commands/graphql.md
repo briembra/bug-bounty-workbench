@@ -4,14 +4,14 @@ argument-hint: <graphql url>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /graphql
+# /bbw-graphql
 
 `references/12`, `checklists/api-graphql.md`, `tools/graphql.py`.
 
 **Input:** `$ARGUMENTS` — the GraphQL endpoint.
 
 ```
-/graphql https://app.acme.com/graphql
+/bbw-graphql https://app.acme.com/graphql
 ```
 
 Read-only by default. Never run a mutation that changes another user's data.
@@ -21,8 +21,8 @@ Read-only by default. Never run a mutation that changes another user's data.
 ## Step 1 — Introspect
 
 ```bash
-python tools/graphql.py https://<host>/graphql --introspect -o schema.json
-python tools/graphql.py https://<host>/graphql --list-mutations
+python tools/graphql.py https://<host>/bbw-graphql --introspect -o schema.json
+python tools/graphql.py https://<host>/bbw-graphql --list-mutations
 ```
 
 If it returns a schema you have every type, field, argument and mutation. Read it
@@ -31,7 +31,7 @@ like a menu and mark the fields that take an `id` or a `filter`.
 If introspection is off:
 
 ```bash
-python tools/graphql.py https://<host>/graphql --field-probe usr
+python tools/graphql.py https://<host>/bbw-graphql --field-probe usr
 ```
 
 `Did you mean "user"?` leaks names. Also try `__type(name:"Query")` directly, a
@@ -110,7 +110,7 @@ introspection: on | off
 types: N   queries: N   mutations: N
 field-authz gaps: N   id IDOR: yes/no
 worst: <query/mutation> — <data exposed>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

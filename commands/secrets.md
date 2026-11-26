@@ -4,15 +4,15 @@ argument-hint: <host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /secrets
+# /bbw-secrets
 
 `references/14`, `workflows/09`, `checklists/secrets.md`, `tools/secrets.py`.
 
 **Input:** `$ARGUMENTS` — host, or a repo/org to sweep.
 
 ```
-/secrets https://app.acme.com
-/secrets github.com/acme
+/bbw-secrets https://app.acme.com
+/bbw-secrets github.com/acme
 ```
 
 A secret is only a finding when it is **live** and **theirs**. Both, or it is a note.
@@ -125,7 +125,7 @@ js files: N   patterns hit: N   live: N
 worst: <type> — <what it grants> — found in <file>
 evidence: findings/<slug>/
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

@@ -49,13 +49,13 @@ with its own input, steps, output shape and stop conditions. The full index is
 
 | Stage | Commands |
 |---|---|
-| Start | [`/hunt`](commands/hunt.md) · [`/programs`](commands/programs.md) |
-| Setup | [`/scope`](commands/scope.md) · [`/recon`](commands/recon.md) · [`/surface`](commands/surface.md) |
-| Hunt | [`/idor`](commands/idor.md) · [`/auth`](commands/auth.md) · [`/ssrf`](commands/ssrf.md) · [`/xss`](commands/xss.md) · [`/injection`](commands/injection.md) · [`/files`](commands/files.md) · [`/logic`](commands/logic.md) · [`/api`](commands/api.md) · [`/graphql`](commands/graphql.md) · [`/cloud`](commands/cloud.md) · [`/secrets`](commands/secrets.md) · [`/cache`](commands/cache.md) · [`/takeover`](commands/takeover.md) · [`/mobile`](commands/mobile.md) · [`/ai`](commands/ai.md) |
-| Finish | [`/chain`](commands/chain.md) · [`/score`](commands/score.md) · [`/report`](commands/report.md) · [`/dedup`](commands/dedup.md) · [`/submit`](commands/submit.md) |
+| Start | [`/bbw-hunt`](commands/hunt.md) · [`/bbw-programs`](commands/programs.md) |
+| Setup | [`/bbw-scope`](commands/scope.md) · [`/bbw-recon`](commands/recon.md) · [`/bbw-surface`](commands/surface.md) |
+| Hunt | [`/bbw-idor`](commands/idor.md) · [`/bbw-auth`](commands/auth.md) · [`/bbw-ssrf`](commands/ssrf.md) · [`/bbw-xss`](commands/xss.md) · [`/bbw-injection`](commands/injection.md) · [`/bbw-files`](commands/files.md) · [`/bbw-logic`](commands/logic.md) · [`/bbw-api`](commands/api.md) · [`/bbw-graphql`](commands/graphql.md) · [`/bbw-cloud`](commands/cloud.md) · [`/bbw-secrets`](commands/secrets.md) · [`/bbw-cache`](commands/cache.md) · [`/bbw-takeover`](commands/takeover.md) · [`/bbw-mobile`](commands/mobile.md) · [`/bbw-ai`](commands/ai.md) |
+| Finish | [`/bbw-chain`](commands/chain.md) · [`/bbw-score`](commands/score.md) · [`/bbw-report`](commands/report.md) · [`/bbw-dedup`](commands/dedup.md) · [`/bbw-submit`](commands/submit.md) |
 
 If the agent has not installed the commands, read the matching file and follow it
-as prose — the procedure is the same either way. `/hunt` is the whole chain on one
+as prose — the procedure is the same either way. `/bbw-hunt` is the whole chain on one
 target; every other command is one step of it.
 
 ---

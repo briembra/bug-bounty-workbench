@@ -4,7 +4,7 @@ argument-hint: <program url or handle> [platform]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /scope
+# /bbw-scope
 
 Scope first, always. This command produces the single file every later command
 checks against.
@@ -12,8 +12,8 @@ checks against.
 **Input:** `$ARGUMENTS` — the program page URL or handle, plus platform.
 
 ```
-/scope https://app.intigriti.com/programs/acme/detail intigriti
-/scope acme bugcrowd
+/bbw-scope https://app.intigriti.com/programs/acme/detail intigriti
+/bbw-scope acme bugcrowd
 ```
 
 ---
@@ -106,5 +106,5 @@ Scope file:  engagements/<program>/scope.json
 wildcards: N  hosts: N  urls: N  mobile: N  ips: N  excluded: N
 Rules: <one line summary>
 Target in scope: yes/no — <quoted entry>
-Next: /recon
+Next: /bbw-recon
 ```

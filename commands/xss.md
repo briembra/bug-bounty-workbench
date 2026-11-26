@@ -4,14 +4,14 @@ argument-hint: <host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /xss
+# /bbw-xss
 
 `references/09`, `workflows/06`, `checklists/xss.md`.
 
 **Input:** `$ARGUMENTS` — host.
 
 ```
-/xss https://app.acme.com
+/bbw-xss https://app.acme.com
 ```
 
 The goal is not a popup. It is impact: a stolen session, an admin action, a
@@ -114,7 +114,7 @@ type: reflected | stored | dom | blind
 context: <the one that worked>
 chain: <if any> → <impact>
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

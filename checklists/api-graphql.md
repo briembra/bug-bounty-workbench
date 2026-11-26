@@ -2,7 +2,7 @@
 
 ## Discovery
 
-- [ ] Docs endpoints checked (`/swagger`, `/openapi.json`, `/api-docs`, `/graphql`).
+- [ ] Docs endpoints checked (`/swagger`, `/openapi.json`, `/api-docs`, `/bbw-graphql`).
 - [ ] JS bundle route list extracted.
 - [ ] API subdomains checked (`api.`, `api-v2.`, `mobile.`).
 - [ ] Mobile base URL extracted.

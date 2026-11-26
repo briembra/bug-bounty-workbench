@@ -14,10 +14,15 @@ directories, records exactly what it wrote, and prints the next command.
 npx bug-bounty-workbench setup --agent claude --global   # user-level dirs
 npx bug-bounty-workbench setup --agent claude,opencode   # more than one
 npx bug-bounty-workbench setup --dry-run                 # print the plan
+npx bug-bounty-workbench update                          # re-apply from this version
 npx bug-bounty-workbench status                          # files present vs recorded
 npx bug-bounty-workbench uninstall                       # remove what setup wrote
 npx bug-bounty-workbench --help
 ```
+
+Commands land as `bbw-<name>.md`, so typing `bbw` in the agent lists all 25.
+`update` re-applies every recorded install from the version you are running and
+removes files an earlier version wrote that this one no longer produces.
 
 Not published to npm yet? Install straight from the repository:
 
@@ -90,7 +95,7 @@ ok    claude  project  133/133 files  2026-11-26T17:57:01.616Z
 `drift` means a file recorded in the manifest is gone — usually another tool
 cleaned the directory. Re-run `setup`.
 
-Then in the agent: `/hunt https://app.example.com`.
+Then in the agent: `/bbw-hunt https://app.example.com`.
 
 ---
 

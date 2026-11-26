@@ -4,15 +4,15 @@ argument-hint: <host or org> [cloud]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /cloud
+# /bbw-cloud
 
 `references/13`, `checklists/cloud.md`.
 
 **Input:** `$ARGUMENTS` — a host, a company name, or a cloud hint (aws/gcp/azure).
 
 ```
-/cloud https://app.acme.com
-/cloud acme aws
+/bbw-cloud https://app.acme.com
+/bbw-cloud acme aws
 ```
 
 The bug is not "a bucket exists". It is **the program's data, readable, because of
@@ -57,7 +57,7 @@ curl -s "https://PROJECT.firebaseio.com/.json"
 | `ListBucketResult` with keys | public listing — continue |
 | `AccessDenied` | private — closed |
 | `AllAccessDisabled` | closed |
-| `NoSuchBucket` | takeover candidate → `/takeover` |
+| `NoSuchBucket` | takeover candidate → `/bbw-takeover` |
 | `200` on a known key | public read, record it |
 
 ## Step 3 — Prove the data is theirs and sensitive
@@ -74,7 +74,7 @@ A public bucket of logos is by design. A backup of `customers.sql.gz` is Critica
 
 ## Step 4 — Metadata and SSRF-adjacent
 
-If you already have SSRF (`/ssrf`), escalate to metadata here. Without SSRF, check
+If you already have SSRF (`/bbw-ssrf`), escalate to metadata here. Without SSRF, check
 whether an app endpoint proxies cloud storage:
 
 ```
@@ -93,7 +93,7 @@ Cross-tenant bucket access through the app = High.
 - Deploy keys or tokens in a public build artefact
 - `docker-compose.yml` with credentials in a public repo
 
-These are `/secrets` finding material — record and hand off.
+These are `/bbw-secrets` finding material — record and hand off.
 
 ## Step 6 — Firebase and serverless
 
@@ -117,7 +117,7 @@ cloud: <provider>
 worst: <resource> — <what is inside>
 evidence: findings/<slug>/
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

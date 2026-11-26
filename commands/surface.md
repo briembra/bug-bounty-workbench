@@ -4,7 +4,7 @@ argument-hint: <host or url>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /surface
+# /bbw-surface
 
 You cannot break what you have not mapped. This is the 20-minute pass that turns
 a host into an attack plan.
@@ -12,7 +12,7 @@ a host into an attack plan.
 **Input:** `$ARGUMENTS` — one host or URL, already confirmed in scope.
 
 ```
-/surface https://app.acme.com
+/bbw-surface https://app.acme.com
 ```
 
 ---
@@ -39,7 +39,7 @@ grep -Eio '(https?://[a-z0-9.-]+)' *.js | sort -u
 grep -Ei 'graphql|swagger|openapi|/v[0-9]/' *.js
 ```
 
-Also check `/openapi.json`, `/swagger.json`, `/v3/api-docs`, `/graphql`,
+Also check `/openapi.json`, `/swagger.json`, `/v3/api-docs`, `/bbw-graphql`,
 `/graphiql`.
 
 ## Step 3 — Write the four tables

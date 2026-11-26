@@ -4,15 +4,15 @@ argument-hint: <host> [param]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /ssrf
+# /bbw-ssrf
 
 `references/08`, `workflows/05`, `checklists/ssrf.md`.
 
 **Input:** `$ARGUMENTS` — host, optionally the parameter you already suspect.
 
 ```
-/ssrf https://app.acme.com
-/ssrf https://app.acme.com avatar_url
+/bbw-ssrf https://app.acme.com
+/bbw-ssrf https://app.acme.com avatar_url
 ```
 
 ---
@@ -113,7 +113,7 @@ sinks tested: N   fetching: N
 reach: none | localhost:<port> | metadata
 evidence: findings/<slug>/  (listener hit log + response)
 severity: Medium (blind) | High (internal) | Critical (credentials)
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

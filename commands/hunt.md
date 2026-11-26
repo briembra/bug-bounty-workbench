@@ -4,7 +4,7 @@ argument-hint: <url or host> [program]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /hunt
+# /bbw-hunt
 
 The end-to-end loop on a single target. Everything else in `commands/` is a
 step of this, run on its own.
@@ -12,8 +12,8 @@ step of this, run on its own.
 **Input:** `$ARGUMENTS` — a URL or host, optionally followed by the program name.
 
 ```
-/hunt https://app.example.com "Acme" on Intigriti
-/hunt api.example.com
+/bbw-hunt https://app.example.com "Acme" on Intigriti
+/bbw-hunt api.example.com
 ```
 
 ---
@@ -33,7 +33,7 @@ Save to `engagements/<program>/scope.json` with `python tools/scope.py --file sc
 
 - `curl -sD- https://<host>/`, `robots.txt`, `sitemap.xml`, `/.well-known/security.txt`
 - Download the JS bundle, grep `/api/`, `graphql`, base URLs (`references/14`)
-- Check `/openapi.json`, `/swagger.json`, `/graphql` (`references/12`)
+- Check `/openapi.json`, `/swagger.json`, `/bbw-graphql` (`references/12`)
 - Note stack from headers, cookies, error pages
 - Register two accounts if the app allows (`you+bb@yourdomain`, unique password)
 
@@ -47,20 +47,20 @@ anything the program excludes, then take the top one and run its command:
 
 | Signal you saw | Command |
 |---|---|
-| object ids in paths, `?user_id=` | `/idor` |
-| login, reset, signup, SSO | `/auth` |
-| URL / webhook / import params | `/ssrf` |
-| user input rendered anywhere | `/xss` |
-| sort, filter, search, numeric ids | `/injection` |
-| upload / download / export | `/files` |
-| cart, coupon, refund, credits | `/logic` |
-| API docs, versions, batch | `/api` or `/graphql` |
-| S3/GCS/Azure/Firebase hosts | `/cloud` |
-| CNAME to a SaaS service | `/takeover` |
-| chatbot, copilot, AI search | `/ai` |
-| mobile or Electron client | `/mobile` |
-| JS with tokens in it | `/secrets` |
-| CDN headers, `Vary`, cache | `/cache` |
+| object ids in paths, `?user_id=` | `/bbw-idor` |
+| login, reset, signup, SSO | `/bbw-auth` |
+| URL / webhook / import params | `/bbw-ssrf` |
+| user input rendered anywhere | `/bbw-xss` |
+| sort, filter, search, numeric ids | `/bbw-injection` |
+| upload / download / export | `/bbw-files` |
+| cart, coupon, refund, credits | `/bbw-logic` |
+| API docs, versions, batch | `/bbw-api` or `/bbw-graphql` |
+| S3/GCS/Azure/Firebase hosts | `/bbw-cloud` |
+| CNAME to a SaaS service | `/bbw-takeover` |
+| chatbot, copilot, AI search | `/bbw-ai` |
+| mobile or Electron client | `/bbw-mobile` |
+| JS with tokens in it | `/bbw-secrets` |
+| CDN headers, `Vary`, cache | `/bbw-cache` |
 
 Do not run five classes in parallel. One to conclusion.
 
@@ -72,12 +72,12 @@ Do not run five classes in parallel. One to conclusion.
 
 ## Step 4 — Score
 
-`/score` — run `python tools/cvss.py "<vector>"`, check the impact sentence
+`/bbw-score` — run `python tools/cvss.py "<vector>"`, check the impact sentence
 against `references/20`, downgrade if the data is demo/seed.
 
 ## Step 5 — Write and submit
 
-`/report` then `/dedup` then `/submit`.
+`/bbw-report` then `/bbw-dedup` then `/bbw-submit`.
 
 ---
 

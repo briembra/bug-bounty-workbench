@@ -9,7 +9,7 @@ API, how to read it, and where the authorization and injection gaps sit.
 
 - **Docs endpoints:** `/swagger`, `/swagger-ui`, `/swagger.json`,
   `/openapi.json`, `/api-docs`, `/v2/api-docs`, `/v3/api-docs`, `/redoc`,
-  `/docs`, `/graphql`, `/graphiql`, `/playground`, `/.well-known/openapi.json`.
+  `/docs`, `/bbw-graphql`, `/graphiql`, `/playground`, `/.well-known/openapi.json`.
 - **JS bundles:** grep for base URLs, `/api/`, `graphql`, fetch wrappers.
 - **Subdomains:** `api.`, `api-v2.`, `internal-api.`, `mobile.`, `m.`.
 - **Mobile app:** base URL string literals after decompile.

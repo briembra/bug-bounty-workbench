@@ -97,10 +97,10 @@ def main() -> int:
     destination.mkdir(parents=True, exist_ok=True)
     for path in files:
         text = rewrite(path.read_text(encoding="utf-8"), args.target or "")
-        (destination / path.name).write_text(text, encoding="utf-8", newline="\n")
+        (destination / f"bbw-{path.name}").write_text(text, encoding="utf-8", newline="\n")
 
     print(f"copied {len(files)} commands to {destination}")
-    print("index: " + ", ".join("/" + p.stem for p in files))
+    print("index: " + ", ".join("/bbw-" + p.stem for p in files))
 
     skill_source = REPO / "SKILL.md"
     if skill_source.exists() and args.target in {"claude", "opencode"}:

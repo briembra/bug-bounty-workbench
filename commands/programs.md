@@ -4,7 +4,7 @@ argument-hint: [platform] [sector] [tech] [keyword]
 allowed-tools: Bash, Read, WebFetch, WebSearch
 ---
 
-# /programs
+# /bbw-programs
 
 Find programs, then rank them. This is the search across the places bounties
 live: HackerOne, Bugcrowd, Intigriti, YesWeHack, Immunefi, Open Bug Bounty,
@@ -13,10 +13,10 @@ huntr, and self-hosted `security.txt` programs.
 **Input:** `$ARGUMENTS` — any mix of platform, sector, tech, keyword.
 
 ```
-/programs hackerone fintech
-/programs intigriti "e-commerce"
-/programs --tech shopify
-/programs --new        # recently launched programs
+/bbw-programs hackerone fintech
+/bbw-programs intigriti "e-commerce"
+/bbw-programs --tech shopify
+/bbw-programs --new        # recently launched programs
 ```
 
 ---
@@ -59,7 +59,7 @@ Write the shortlist to `engagements/shortlist.md` as a table, top 5 only.
 
 ## Step 3 — Pick one and hand off
 
-Pick the single best and run `/scope` on it, then `/recon`.
+Pick the single best and run `/bbw-scope` on it, then `/bbw-recon`.
 
 Never start two programs at once. Depth beats breadth — `references/26`.
 

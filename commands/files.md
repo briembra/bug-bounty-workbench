@@ -4,15 +4,15 @@ argument-hint: <host> [upload-endpoint]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /files
+# /bbw-files
 
 `references/10`, `checklists/file-upload.md`.
 
 **Input:** `$ARGUMENTS` — host, optionally the upload or download endpoint.
 
 ```
-/files https://app.acme.com
-/files "POST /api/avatar"
+/bbw-files https://app.acme.com
+/bbw-files "POST /api/avatar"
 ```
 
 Prove with the smallest possible payload. Never leave a working shell behind.
@@ -111,7 +111,7 @@ file read: yes/no — <file>
 storage: closed | public — <what is inside>
 evidence: findings/<slug>/
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

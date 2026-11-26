@@ -4,15 +4,15 @@ argument-hint: <host or endpoint> [param]
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /injection
+# /bbw-injection
 
 `references/07`, `workflows/07`, `checklists/injection.md`.
 
 **Input:** `$ARGUMENTS` — host or endpoint, optional parameter.
 
 ```
-/injection https://app.acme.com
-/injection "GET /api/search?q="
+/bbw-injection https://app.acme.com
+/bbw-injection "GET /api/search?q="
 ```
 
 A 500 is not a finding. A returned row, a command output, a rendered `49` is.
@@ -128,7 +128,7 @@ inputs tested: N   injectable: N
 class: sql | nosql | command | ssti | xxe
 proof: <the exact payload and the extracted value>
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

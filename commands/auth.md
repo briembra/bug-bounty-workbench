@@ -4,14 +4,14 @@ argument-hint: <host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /auth
+# /bbw-auth
 
 `references/05`, `workflows/04`, `checklists/auth.md`, `tools/jwt_tool.py`.
 
 **Input:** `$ARGUMENTS` — the host with the login surface.
 
 ```
-/auth https://app.acme.com
+/bbw-auth https://app.acme.com
 ```
 
 Use **your own** email only. Never trigger a mail to an address you do not own.
@@ -111,7 +111,7 @@ controls tested: N
 broken: <control> — <what it allows>
 chain: <link A> + <link B> = <impact>
 severity: <band>
-next: /score or /report
+next: /bbw-score or /bbw-report
 ```
 
 ## Stop conditions

@@ -4,7 +4,7 @@ argument-hint: <finding or host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /chain
+# /bbw-chain
 
 `references/25`.
 
@@ -12,8 +12,8 @@ allowed-tools: Bash, Read, Write, WebFetch
 host where several small issues exist.
 
 ```
-/chain "open redirect on /login?next="
-/chain https://app.acme.com
+/bbw-chain "open redirect on /login?next="
+/bbw-chain https://app.acme.com
 ```
 
 Most High and Critical reports are chains. A low on its own is a note; a low that
@@ -75,7 +75,7 @@ the internal service, the token that works.
 
 ## Step 5 — Score the chain, not the links
 
-`/score` on the end state.
+`/bbw-score` on the end state.
 
 | End state | Severity |
 |---|---|
@@ -112,7 +112,7 @@ chain: <A> + <B> → <impact>
 end state: ATO | data | RCE | escalation
 evidence: findings/<slug>/chain-*
 severity: <band>
-next: /report
+next: /bbw-report
 ```
 
 ## Stop conditions

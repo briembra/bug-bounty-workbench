@@ -4,15 +4,15 @@ argument-hint: <host or chat url>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /ai
+# /bbw-ai
 
 `references/15`, `workflows/11`, `checklists/ai-llm.md`.
 
 **Input:** `$ARGUMENTS` — host or the specific chat/copilot/search endpoint.
 
 ```
-/ai https://app.acme.com/assistant
-/ai https://support.acme.com
+/bbw-ai https://app.acme.com/assistant
+/bbw-ai https://support.acme.com
 ```
 
 The classes that pay: **system prompt leakage** (Low), **RAG cross-tenant
@@ -93,19 +93,19 @@ From the leaked tool list, test each parameter:
 
 | Tool | Abuse |
 |---|---|
-| `fetch_url` | localhost, metadata, internal hosts → `/ssrf` |
+| `fetch_url` | localhost, metadata, internal hosts → `/bbw-ssrf` |
 | `run_sql` / `query` | `SELECT` on another schema, write attempt |
 | `read_file` | `../../etc/passwd`, another tenant's path |
 | `send_email` | your own address only |
 | `search_docs` | another tenant's corpus |
 | `code_exec` | `print(7*7)` → `49` |
 
-Every tool is a `/ssrf`, `/idor` or `/injection` surface wearing a new coat. Same
+Every tool is a `/bbw-ssrf`, `/bbw-idor` or `/bbw-injection` surface wearing a new coat. Same
 standards apply.
 
 ## Step 6 — Model-level issues to note, not chase
 
-- Markdown/HTML rendering of assistant output → `/xss` if unsanitised
+- Markdown/HTML rendering of assistant output → `/bbw-xss` if unsanitised
 - Image URL rendering → SSRF or tracking
 - Token/cost exhaustion → DoS, out of scope
 - Hallucination → not a bug
@@ -128,7 +128,7 @@ rag cross-tenant: yes/no
 tool abuse: ssrf | ssrf+ | none
 injection into action: yes/no
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions

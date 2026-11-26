@@ -4,15 +4,15 @@ argument-hint: <base url>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /api
+# /bbw-api
 
 `references/12`, `checklists/api-graphql.md`.
 
 **Input:** `$ARGUMENTS` — API base URL or host.
 
 ```
-/api https://api.acme.com
-/api https://app.acme.com/api
+/bbw-api https://api.acme.com
+/bbw-api https://app.acme.com/api
 ```
 
 ---
@@ -45,7 +45,7 @@ auth checks the new one added.
 
 1. **Auth:** does it need a token? Try without; try with an expired one; try with a
    low-privilege user's token.
-2. **Object authz:** does it check ownership? → `/idor`
+2. **Object authz:** does it check ownership? → `/bbw-idor`
 3. **Methods:** `OPTIONS` to see what is allowed; then `PUT`, `PATCH`, `DELETE`.
 4. **Mass assignment:** does `PATCH /users/me` accept fields the UI never sends?
 
@@ -91,7 +91,7 @@ curl -sD- "https://<host>/api/me" -H "Origin: https://evil.com" -H "Cookie: <s>"
 ## Step 6 — Errors are data
 
 Trigger 400/500 and read: stack traces name the framework, the ORM, the internal
-path and sometimes the SQL. Note it; it feeds `/injection`.
+path and sometimes the SQL. Note it; it feeds `/bbw-injection`.
 
 ## Step 7 — Discipline
 
@@ -109,7 +109,7 @@ docs: found | closed
 endpoints mapped: N   versions: <list>
 findings: auth-gap N, mass-assign N, cors N
 worst: <endpoint> — <what it allows>
-next: /idor or /score
+next: /bbw-idor or /bbw-score
 ```
 
 ## Stop conditions

@@ -4,14 +4,14 @@ argument-hint: <host>
 allowed-tools: Bash, Read, Write, WebFetch
 ---
 
-# /logic
+# /bbw-logic
 
 `references/11`, `workflows/08`, `checklists/business-logic.md`.
 
 **Input:** `$ARGUMENTS` — host with money, credits, subscriptions or invites.
 
 ```
-/logic https://shop.acme.com
+/bbw-logic https://shop.acme.com
 ```
 
 The proof is a state the system should not allow, reached without paying and
@@ -125,7 +125,7 @@ flows mapped: N   illegal edges accepted: N
 worst: <flow> — <what it gives>
 financial harm caused: none
 severity: <band>
-next: /score then /report
+next: /bbw-score then /bbw-report
 ```
 
 ## Stop conditions
