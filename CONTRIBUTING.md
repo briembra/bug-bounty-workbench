@@ -30,8 +30,21 @@ workflows/NN-hunt-<class>.md
 checklists/<class>.md
 ```
 
-Add it to the router table in `SKILL.md` and the index at the bottom of
-`SKILL.md`. Keep the numbering stable once published.
+Add it to the router table in `SKILL.md`, the command index in `SKILL.md`, and the
+index in `commands/README.md` if you add a command. Keep the numbering stable once
+published.
+
+## Adding a command
+
+```
+commands/<name>.md
+```
+
+Frontmatter must have `description`, `argument-hint`, `allowed-tools`. Body must
+have: the references it depends on, `**Input:**` with `$ARGUMENTS` and two
+examples, numbered steps with the exact commands, `## Output shape`, and
+`## Stop conditions`. Then add it to `commands/README.md` and the command index in
+`SKILL.md`. `tools/sync_commands.py` picks it up with no change.
 
 ## Adding a tool
 

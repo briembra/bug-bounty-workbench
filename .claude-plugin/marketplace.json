@@ -1,0 +1,22 @@
+{
+  "name": "bug-bounty-hunter",
+  "owner": {
+    "name": "briembra",
+    "url": "https://github.com/briembra"
+  },
+  "plugins": [
+    {
+      "name": "bug-bounty-hunter",
+      "source": "./",
+      "description": "Authorized bug bounty hunting end to end. 25 slash commands plus a full reference method: scope, recon, every vulnerability class, evidence, scoring, reporting.",
+      "version": "1.1.0",
+      "license": "MIT",
+      "keywords": [
+        "bug-bounty",
+        "security",
+        "recon",
+        "pentest"
+      ]
+    }
+  ]
+}

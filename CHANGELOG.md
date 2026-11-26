@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.1.0 — 2026-11-26
+
+Commands and installers.
+
+- **25 slash commands** in `commands/`, one per stage and vulnerability class:
+  `hunt`, `programs`, `scope`, `recon`, `surface`, `idor`, `auth`, `ssrf`, `xss`,
+  `injection`, `files`, `logic`, `api`, `graphql`, `cloud`, `secrets`, `cache`,
+  `takeover`, `mobile`, `ai`, `chain`, `score`, `report`, `dedup`, `submit`.
+  Each names its input, its steps, its evidence standard, its output shape and
+  its stop conditions.
+- `commands/README.md` — index with the recommended chains.
+- `INSTALL.md` — install paths for Claude Code (plugin and manual), OpenCode,
+  Codex and Cursor, plus uninstall.
+- `tools/sync_commands.py` — copies the 25 commands into an agent's command
+  directory, converts frontmatter where the agent expects less, installs the
+  skill for Claude Code and OpenCode. `--dry-run` supported.
+- `.claude-plugin/plugin.json` + `.claude-plugin/marketplace.json`,
+  `.codex-plugin/plugin.json`, `.cursor-plugin/plugin.json` — plugin manifests so
+  the commands and skill are discoverable without any manual copying.
+- `PROMPT.md` rewritten as the install prompt: clone, install for the current
+  agent, load `SKILL.md` + `AGENTS.md`, report back in three lines, wait.
+- `SKILL.md` gains a command index; `README.md` gains install and the 25-command
+  table.
+
 ## 1.0.0 — 2026-11-26
 
 First release.

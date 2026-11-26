@@ -1,0 +1,88 @@
+# Commands
+
+25 commands. Each one is a complete procedure, not a prompt fragment: it names its
+inputs, its steps, its evidence standard, and its stop conditions.
+
+In Claude Code, Codex, Cursor and OpenCode these appear as `/hunt`, `/programs`,
+and so on once the repository is installed (see [`../INSTALL.md`](../INSTALL.md)).
+In any other agent, open the file and follow it — same procedure either way.
+
+---
+
+## Start here
+
+| Command | What it does |
+|---|---|
+| `/hunt` | The whole loop on one target: scope → map → one class → prove → score → report. |
+| `/programs` | Search HackerOne, Bugcrowd, Intigriti, YesWeHack, Immunefi, huntr, OBB and self-hosted policies; rank the shortlist. |
+
+## Set up the engagement
+
+| Command | What it does |
+|---|---|
+| `/scope` | Turn a program page into one scope file with hosts, wildcards, exclusions and rules. |
+| `/recon` | Passive-first subdomain discovery, bounded resolution, bucket the results. |
+| `/surface` | Map one host: actors, objects, flows, endpoints, trust boundaries. |
+
+## Hunt a class
+
+| Command | What it does |
+|---|---|
+| `/idor` | Broken object-level authorization: read, write, delete, escalate across users and tenants. |
+| `/auth` | Reset poisoning, MFA skip, OAuth redirect abuse, JWT forgery, session flaws. |
+| `/ssrf` | Prove the server-side fetch, reach localhost, then metadata. |
+| `/xss` | Reflected, stored, DOM and blind — with the chain to real impact. |
+| `/injection` | SQL, NoSQL, command, SSTI, XXE, deserialization. One proof, then stop. |
+| `/files` | Upload bypass, path traversal, arbitrary write, storage ACLs. |
+| `/logic` | Price manipulation, coupons, refunds, payouts, quota bypass, role escalation. |
+| `/api` | REST surface: docs discovery, authz gaps, mass assignment, versioning, batching. |
+| `/graphql` | Introspection, field-level authz, global-id IDOR, mutation flaws. |
+| `/cloud` | Buckets, metadata, managed services, CI/CD trust. |
+| `/secrets` | Live secrets in JS, source maps, public repos and build artefacts. |
+| `/cache` | Cache poisoning and deception, header and protocol flaws. |
+| `/takeover` | Dangling CNAMEs — prove it, claim the minimum, release it. |
+| `/mobile` | APK/IPA review: keys, endpoints, storage, deep links, pinning. |
+| `/ai` | Prompt injection, system prompt leakage, RAG disclosure, tool-call abuse. |
+
+## Finish it
+
+| Command | What it does |
+|---|---|
+| `/chain` | Link a low finding into a kill chain and prove the end state. |
+| `/score` | Honest CVSS plus the program's own band, with the downgrades applied. |
+| `/report` | Write the platform-ready report from the evidence folder. |
+| `/dedup` | Check for duplicates and prior art before you spend a triager's time. |
+| `/submit` | Final gate: checklist, platform fields, redaction, disclosure window. |
+
+---
+
+## How a command is shaped
+
+```markdown
+---
+description: one line — this is what the agent sees in the command list
+argument-hint: <what to type after the command>
+allowed-tools: Bash, Read, Write, WebFetch
+---
+
+# /name
+References it depends on, then:
+**Input:** `$ARGUMENTS` — what it accepts, with examples.
+Step 1 … Step N — the procedure, with the exact commands.
+## Output shape — the fixed report back to you.
+## Stop conditions — when to quit instead of pushing.
+```
+
+`$ARGUMENTS` is whatever follows the command. Examples throughout the files use
+`app.example.com` — replace with the in-scope host.
+
+## Chains
+
+```
+/programs → /scope → /recon → /surface
+/surface  → /idor | /auth | /ssrf | /xss | /injection | /files | /logic | /api
+          → /graphql | /cloud | /secrets | /cache | /takeover | /mobile | /ai
+any finding → /chain → /score → /report → /dedup → /submit
+```
+
+`/hunt` runs that whole path on one target when you do not want to drive each step.

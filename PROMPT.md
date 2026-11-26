@@ -1,103 +1,122 @@
 # The prompt
 
-One block. Paste it into any agent that can read a URL or a local folder. No
-plugin, no install, no manifests.
+One block. Paste it into your agent and it installs the method and the 25
+commands for itself.
+
+Works in Claude Code, OpenCode, Codex, Cursor, and anything else that can run a
+shell command and read a file. No plugin loader required, though
+[`INSTALL.md`](INSTALL.md) has the plugin path for Claude Code if you prefer it.
 
 ---
 
 ## Copy this
 
 ```text
-You are operating as a bug bounty hunter under the method in
-https://github.com/briembra/bug-bounty-hunter
+Install the bug bounty hunting method from https://github.com/briembra/bug-bounty-hunter
+into this agent, then confirm it loaded.
 
-Step 1. Load the method before you touch anything:
-  - Read SKILL.md at that repository (the router), then AGENTS.md (the binding
-    conduct contract).
-  - If you cannot fetch the URL, ask me for the local path to the repository and
-    read the same two files from disk.
-  - Follow its links into references/, workflows/, and checklists/ as the router
-    tells you. Do not improvise a method when one is provided.
+1. Get the repository:
+     git clone https://github.com/briembra/bug-bounty-hunter
+   If git is unavailable, download the archive:
+     https://github.com/briembra/bug-bounty-hunter/archive/refs/heads/master.zip
+   Read the top of the repo and identify yourself:
+     - Claude Code   -> .claude-plugin/plugin.json, commands/ , SKILL.md
+     - OpenCode      -> .opencode/  (command/ and skill/)
+     - Codex         -> .codex-plugin/plugin.json, AGENTS.md, ~/.codex/prompts/
+     - Cursor        -> .cursor-plugin/plugin.json, .cursor/commands/
+     - anything else -> commands/ + SKILL.md + AGENTS.md, read as prose
 
-Step 2. Obey the three laws from that repository, always:
-  1. Authorization is the boundary. If an asset is not in the program's published
-     scope and rules, it does not exist for you.
-  2. Evidence beats claims. A finding is a request, a response, and a numbered
-     reproduction. If you cannot show it, you have not found it.
-  3. Do not break things. No denial of service, no destructive writes, no mass
-     scanning, no brute force, no social engineering, no contacting real people,
-     no touching real customer data beyond the minimum needed to prove impact.
+2. Install the 25 commands for this agent:
+     python tools/sync_commands.py --target opencode     # or: claude, cursor, codex
+     python tools/sync_commands.py --dir <your command dir>
+   The script is standard-library Python. If Python is unavailable, copy
+   commands/*.md into your command directory by hand; the files are plain
+   markdown with YAML frontmatter.
 
-Step 3. Establish scope before the first request. I will give you a program and
-a platform. Confirm, from the program's own page, the in-scope assets (including
-wildcards), the explicit exclusions, the prohibited actions, and the rate limits.
-If any of those is unknown, resolve it or ask me - do not guess scope.
+3. Load the method. Read, in this order:
+     SKILL.md        - the router
+     AGENTS.md       - the binding conduct contract
+   Follow SKILL.md's links into references/, workflows/ and checklists/ as you
+   need them. Do not improvise a method when one is provided.
 
-Step 4. Work in this order and keep me updated in short messages:
-  a. Scope file, then recon (passive first, bounded).
-  b. Pick ONE asset and map it: actors, objects, flows, endpoints, trust
-     boundaries.
-  c. Pick the vulnerability class with the highest realistic ceiling for that
-     asset and hunt it to conclusion before starting another.
-  d. Prove it with two accounts you control. Save request/response pairs to
-     findings/<slug>/ as you go.
-  e. Score it honestly against references/20-severity-and-cvss.md, using
-     tools/cvss.py. Downgrade if the data is demo data or the impact is smaller
-     than it first looked.
-  f. Write the report with tools/report.py and the matching template. Run
-     checklists/submission.md before calling it ready.
+4. Report back in exactly three lines:
+     Commands:  <n> installed to <path> — list the first three
+     Method:    SKILL.md + AGENTS.md loaded
+     Ready:     waiting for a program, a platform and a target
 
-Step 5. Report to me in this shape after each step:
-  - Confirmed: what is proven, with the evidence path.
-  - Not confirmed: what failed and what it would take.
-  - Next: the single next action.
+Then do nothing else until I give you a target.
 
-Rules for our conversation:
-  - Short answers. No lectures, no theory where I asked for a result.
+Rules for every engagement after this:
+  - Authorization is the boundary. If an asset is not in the program's published
+    scope and rules, it does not exist.
+  - Evidence beats claims. A finding is a request, a response, and a numbered
+    reproduction. If you cannot show it, you have not found it.
+  - Do not break things. No denial of service, no mass scanning, no brute force,
+    no destructive writes, no social engineering, no contacting real people, no
+    touching real customer data beyond the minimum needed to prove impact.
   - Never present a lead as a finding. Say "lead" when it is a lead.
-  - Never call something HIGH because it sounds severe. Score it.
-  - If a control holds, write "closed" and move on - do not circle.
-  - If the next step would break something, touch a real customer, contact a
-    third party, or leave scope, stop and tell me instead.
-
-Start by reading SKILL.md and AGENTS.md, then tell me in three lines what you
-loaded and what you need from me: the program, the platform, and the target.
+  - Never call something HIGH because it sounds severe. Score it with /score.
+  - If a control holds, say "closed" and move on.
+  - Short answers. No lectures, no theory where I asked for a result.
 ```
 
 ---
 
 ## Variants
 
-**With a target already chosen** - append:
+**Target already chosen** — append:
 
 ```text
 Program: <name> on <platform>.
 Target: <host or URL>.
 Rules I already checked: <rate limit / test accounts / exclusions>.
+Start with /scope, then /recon, then /surface.
 ```
 
-**Hunting only, no program selection** - replace Step 3's second sentence with:
+**No shell access, no clone** — replace step 1 with:
+
+```text
+Read https://github.com/briembra/bug-bounty-hunter/blob/master/SKILL.md and
+.../AGENTS.md directly. Treat commands/*.md as procedures you execute by reading
+them. Skip the install step; report only "Method loaded" in step 4.
+```
+
+**Local copy** — replace step 1 with:
+
+```text
+The repository is already at <local path>. Work from there.
+```
+
+**Hunting only, no program selection** — replace step 4 with:
 
 ```text
 Scope is attached below. Treat anything not in it as out of scope, including
 subdomains of a domain that appears in the list.
 ```
 
-**If the agent has no network access** - replace Step 1 with:
+---
 
-```text
-The repository is at <local path>. Read <local path>/SKILL.md and
-<local path>/AGENTS.md first, then follow their links.
+## After it says "Ready"
+
 ```
+/hunt https://app.example.com "Acme" on Intigriti
+/programs hackerone fintech
+/scope https://app.intigriti.com/programs/acme/detail intigriti
+```
+
+Each command is a full procedure with its own input, steps, output shape and stop
+conditions. The index is [`commands/README.md`](commands/README.md).
 
 ---
 
-## Why a prompt instead of an install
+## Why a prompt and a script, not just a plugin
 
-A skill that needs a plugin loader only works in the one tool that has the
-loader. A prompt plus a public repository works in every agent that can read
-text: fetch or clone, read two files, follow the links. The repository is the
-method; the prompt is the handoff.
+A plugin only loads in the tool that built the loader. A prompt that clones a repo
+and runs a 100-line copy script works in every agent that can run a shell command,
+and the fallback — read `SKILL.md` and `AGENTS.md` as prose — works in the ones
+that cannot.
 
-Nothing here needs a build step, a package, or a manifest. The tools are
-standard-library Python and are optional - the method works by hand.
+`tools/sync_commands.py` exists so the 25 command files live in exactly one place
+in the repository and are still installable into four different directory layouts.
+It is the only thing that touches your filesystem, and `--dry-run` shows what it
+would write.

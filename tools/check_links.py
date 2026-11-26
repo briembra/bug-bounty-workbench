@@ -8,7 +8,13 @@ LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
 bad = []
 count = 0
 
-for md in root.rglob("*.md"):
+# Directories produced by tools/sync_commands.py. They are copies, they are
+# gitignored, and checking them only re-checks the same files.
+SKIP = {".git", ".opencode", ".claude", ".cursor", ".codex", "__pycache__"}
+
+for md in sorted(root.rglob("*.md")):
+    if SKIP.intersection(md.relative_to(root).parts):
+        continue
     text = md.read_text(encoding="utf-8", errors="replace")
     for target in LINK.findall(text):
         if target.startswith(("http://", "https://", "#", "mailto:")):

@@ -53,7 +53,7 @@ passive sources; no brute force by default.
 
 ```bash
 python tools/subdomains.py scope.json -o subs.json
-python tools/subdomains.py scope.json --active-brute --wordlist data/subdomains-top1m.txt -o subs.json
+python tools/subdomains.py scope.json --active-brute --wordlist data/subdomains.txt -o subs.json
 ```
 
 Default: passive only. `--active-brute` is opt-in and rate-limited; use it only
@@ -215,6 +215,41 @@ python tools/scope_diff.py scope-old.json scope-new.json
 ```
 
 Prints added/removed hosts per asset type. Run it weekly on a long engagement.
+
+---
+
+## sync_commands.py
+
+Installs the 25 command files into an agent's command directory. It is the only
+tool that writes to your filesystem, and it only writes inside the target
+directory.
+
+```bash
+python tools/sync_commands.py --target opencode    # .opencode/command/
+python tools/sync_commands.py --target claude      # .claude/commands/
+python tools/sync_commands.py --target cursor      # .cursor/commands/
+python tools/sync_commands.py --target codex       # .codex/prompts/
+python tools/sync_commands.py --dir <any dir>
+python tools/sync_commands.py --target opencode --dry-run
+```
+
+Codex gets its frontmatter trimmed to the keys it defines. Re-running is
+idempotent: it overwrites the same 25 files and never touches anything else in
+the directory. For Claude Code and OpenCode it also installs the skill
+(`SKILL.md` + `AGENTS.md`) into the agent's skill directory.
+
+---
+
+## check_links.py
+
+Repository maintenance, not hunting. Walks every markdown file and verifies that
+every relative link resolves.
+
+```bash
+python tools/check_links.py
+```
+
+Run it before any commit that adds or renames a file.
 
 ---
 

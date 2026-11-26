@@ -16,10 +16,12 @@ single question**.
 Read this file first. It routes. Everything deep lives in `references/`,
 `workflows/`, `checklists/`, and `templates/`.
 
-> **How this is used:** there is nothing to install. The user pastes the block in
-> [`PROMPT.md`](PROMPT.md) into their agent; the prompt tells the agent to load
-> this file and `AGENTS.md`, then follow the routes below. If you are the agent
-> reading this, continue at "Route the engagement first".
+> **How this is used:** paste the block in [`PROMPT.md`](PROMPT.md) into your
+> agent. It clones the repository, installs the 25 commands for whichever agent
+> is running (`tools/sync_commands.py`), loads this file and `AGENTS.md`, then
+> waits for a target. Per-agent detail is in [`INSTALL.md`](INSTALL.md). If you
+> are the agent reading this, install the commands, then continue at the
+> **Command index** below and "Route the engagement first".
 
 ---
 
@@ -36,6 +38,25 @@ Read this file first. It routes. Everything deep lives in `references/`,
    minimum needed to prove impact. Prove access, then stop.
 
 If a request conflicts with these, the laws win.
+
+---
+
+## Command index
+
+25 commands ship with this method. Each is a complete procedure in `commands/`
+with its own input, steps, output shape and stop conditions. The full index is
+[`commands/README.md`](commands/README.md).
+
+| Stage | Commands |
+|---|---|
+| Start | [`/hunt`](commands/hunt.md) · [`/programs`](commands/programs.md) |
+| Setup | [`/scope`](commands/scope.md) · [`/recon`](commands/recon.md) · [`/surface`](commands/surface.md) |
+| Hunt | [`/idor`](commands/idor.md) · [`/auth`](commands/auth.md) · [`/ssrf`](commands/ssrf.md) · [`/xss`](commands/xss.md) · [`/injection`](commands/injection.md) · [`/files`](commands/files.md) · [`/logic`](commands/logic.md) · [`/api`](commands/api.md) · [`/graphql`](commands/graphql.md) · [`/cloud`](commands/cloud.md) · [`/secrets`](commands/secrets.md) · [`/cache`](commands/cache.md) · [`/takeover`](commands/takeover.md) · [`/mobile`](commands/mobile.md) · [`/ai`](commands/ai.md) |
+| Finish | [`/chain`](commands/chain.md) · [`/score`](commands/score.md) · [`/report`](commands/report.md) · [`/dedup`](commands/dedup.md) · [`/submit`](commands/submit.md) |
+
+If the agent has not installed the commands, read the matching file and follow it
+as prose — the procedure is the same either way. `/hunt` is the whole chain on one
+target; every other command is one step of it.
 
 ---
 

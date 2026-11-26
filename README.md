@@ -1,33 +1,82 @@
 # Bug Bounty Hunter
 
-A complete method for authorized bug bounty hunting — from picking a program to a
+An agent skill for authorized bug bounty hunting — from picking a program to a
 report a triager accepts without asking a question.
 
-No install. No plugin. You paste one prompt into your agent and it runs on this
-repository.
+**25 slash commands. 26 references. 13 workflows. 15 checklists.**
+Works in Claude Code, OpenCode, Codex, Cursor, or any agent that can read a file.
 
 ---
 
-## Use it
+## Install
 
-Open [`PROMPT.md`](PROMPT.md) and copy the block. That is the whole setup.
+Paste the block in [`PROMPT.md`](PROMPT.md) into your agent. It clones the
+repository, installs the commands for the agent it is running in, loads the
+method, and waits for a target.
+
+Or do it by hand:
+
+```bash
+git clone https://github.com/briembra/bug-bounty-hunter
+cd bug-bounty-hunter
+python tools/sync_commands.py --target opencode   # or: claude, cursor, codex
+```
+
+Per-agent detail, plugin installs, and uninstall: [`INSTALL.md`](INSTALL.md).
+
+---
+
+## Use
 
 ```
-Read https://github.com/briembra/bug-bounty-hunter — start with SKILL.md and
-AGENTS.md, then hunt <program> on <platform>, in scope only.
+/hunt https://app.example.com "Acme" on Intigriti
 ```
 
-The prompt tells the agent to load the method, obey the three laws, establish
-scope before the first request, and report back in a fixed shape. Anything that
-can read a URL or a folder can run it — Claude, Codex, Cursor, a local model, an
-automation harness.
+That is the whole loop: scope gate, map the asset, pick one class by ceiling,
+prove it with two accounts, score it honestly, write it, dedup it, submit it.
 
-If the agent has no network access, give it the cloned folder instead:
+Or drive the steps yourself:
 
 ```
-The repository is at <local path>. Read <local path>/SKILL.md and
-<local path>/AGENTS.md first, then follow their links.
+/programs          find programs worth hunting across every platform
+/scope             program page -> one verified scope file
+/recon             passive-first subdomain discovery, bounded
+/surface           map one host: actors, objects, flows, trust boundaries
 ```
+
+---
+
+## The 25 commands
+
+| Stage | Command | Purpose |
+|---|---|---|
+| Start | `/hunt` | Full loop on one target URL. |
+| Start | `/programs` | Search and rank bug bounty programs. |
+| Setup | `/scope` | Build and verify the scope file. |
+| Setup | `/recon` | Subdomain discovery and fingerprinting. |
+| Setup | `/surface` | Map one host before testing it. |
+| Hunt | `/idor` | Broken object-level authorization. |
+| Hunt | `/auth` | Auth, session, OAuth, JWT. |
+| Hunt | `/ssrf` | Server-side request forgery. |
+| Hunt | `/xss` | Reflected, stored, DOM, blind. |
+| Hunt | `/injection` | SQL, NoSQL, command, SSTI, XXE. |
+| Hunt | `/files` | Upload, traversal, storage ACLs. |
+| Hunt | `/logic` | Price, coupon, refund, quota, role. |
+| Hunt | `/api` | REST surface and authz gaps. |
+| Hunt | `/graphql` | Introspection and field-level authz. |
+| Hunt | `/cloud` | Buckets, metadata, CI/CD trust. |
+| Hunt | `/secrets` | Live secrets in JS and repos. |
+| Hunt | `/cache` | Cache poisoning and deception. |
+| Hunt | `/takeover` | Dangling CNAMEs. |
+| Hunt | `/mobile` | APK/IPA review. |
+| Hunt | `/ai` | Prompt injection, RAG, tool abuse. |
+| Finish | `/chain` | Link findings into a kill chain. |
+| Finish | `/score` | CVSS plus the program's own band. |
+| Finish | `/report` | Write the platform-ready report. |
+| Finish | `/dedup` | Check duplicates and prior art. |
+| Finish | `/submit` | Final gate before sending. |
+
+Full index with what each one covers: [`commands/README.md`](commands/README.md).
 
 ---
 
@@ -35,25 +84,25 @@ The repository is at <local path>. Read <local path>/SKILL.md and
 
 | Path | Contents |
 |---|---|
-| `PROMPT.md` | The paste-able prompt. Start here. |
-| `SKILL.md` | Entry point and router. What the prompt loads. |
-| `AGENTS.md` | Binding operating contract: scope gate, evidence contract, safety rails, stop conditions. |
-| `references/` | 26 deep documents: method, every vulnerability class, delivery. |
+| `commands/` | 25 slash commands. |
+| `PROMPT.md` | The paste-able install prompt. |
+| `INSTALL.md` | Per-agent install paths. |
+| `SKILL.md` | The router the skill loads. |
+| `AGENTS.md` | Binding operating contract: scope gate, evidence, safety rails, stop conditions. |
+| `references/` | 26 deep documents — method, every vulnerability class, delivery. |
 | `workflows/` | 13 step-by-step playbooks for a full engagement. |
 | `checklists/` | 15 testable checklists, one per class plus the submission gate. |
 | `templates/` | Report templates for Intigriti, HackerOne, Bugcrowd, YesWeHack; PoC and CVSS worksheets. |
-| `prompts/` | Role prompts: recon planner, class selector, triage reviewer, report editor, dedup analyst, exploit reviewer. |
-| `tools/` | 13 optional Python tools, standard library only. |
-| `data/` | Severity matrix, common paths, sensitive patterns, takeover fingerprints, JWT secret starter, parameter list, subdomain wordlist. |
+| `prompts/` | 6 role prompts for sub-agents. |
+| `tools/` | 14 Python scripts, standard library only. |
+| `data/` | Severity matrix, common paths, sensitive patterns, takeover fingerprints, JWT secrets, parameters, subdomains. |
 
 ---
 
 ## The tools are optional
 
 Every tool is plain Python 3.10+ with no dependencies. Nothing needs installing;
-there is no `pip install` step. The method works entirely by hand — the tools
-just do the repetitive parts (scope parsing, probing, CVSS maths, report
-rendering).
+there is no `pip install` step. The commands work entirely by hand.
 
 ```bash
 python tools/scope.py --file scope.txt -o scope.json
