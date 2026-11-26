@@ -4,11 +4,8 @@ The `tools/` directory is a working toolkit. Every script is bounded by default:
 it prints what it did, what it skipped, and why. Nothing sends load, brute forces,
 or writes destructively.
 
-Install once:
-
-```bash
-pip install -r tools/requirements.txt
-```
+Nothing to install: every script is standard-library Python 3.10+, so
+`python tools/<name>.py` works on a clean machine. Skip to the pipeline.
 
 ---
 

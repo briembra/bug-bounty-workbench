@@ -167,11 +167,10 @@ Before submitting, run the
 
 ## Tooling
 
-The `tools/` directory is a working toolkit, not decoration. Every script runs.
+The `tools/` directory is a working toolkit, not decoration. Every script runs,
+and every script is standard-library Python 3.10+ — nothing to install.
 
 ```bash
-pip install -r tools/requirements.txt
-
 python tools/scope.py --platform intigriti --program <handle> -o scope.json
 python tools/subdomains.py scope.json -o subs.json
 python tools/probe.py subs.json -o alive.json
