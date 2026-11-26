@@ -67,6 +67,7 @@ Pick the entry point from what the user gave you.
 | Input | Start here |
 |---|---|
 | "Find me a program" / no target named | [program selection](references/01-program-selection.md) → [scope](references/02-scope-and-rules.md) |
+| "Where is there still low-hanging fruit?" | [freshness](references/01-program-selection.md#freshness-hunt-new-surface-not-new-programs) → [recon](references/03-recon.md) |
 | A program URL or handle | [scope and rules](references/02-scope-and-rules.md) → [new program workflow](workflows/01-new-program.md) |
 | A list of domains/hosts | [recon](references/03-recon.md) → [recon pass](workflows/02-recon-pass.md) |
 | A live web app, "hunt it" | [attack surface](references/04-attack-surface-mapping.md) → pick a class below |

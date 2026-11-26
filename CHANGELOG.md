@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.1 — 2026-11-26
+
+Freshness, in the program-selection path.
+
+- `references/01-program-selection.md` gains **Freshness: hunt new surface, not
+  new programs** — a signal table (scope updates, acquisitions, new features, v2
+  APIs, newest certificates, app releases, migrations, deadline features, beta
+  flows), where "new" misleads, and a 70/30 budget rule.
+- `/bbw-programs --fresh` scores candidates on surface added in the last 90 days
+  instead of program age.
+- SKILL.md routes "where is there still low-hanging fruit?" to that section.
+- Scope drift: save the scope on day one, re-run weekly, diff — every added asset
+  is a lead that costs one command.
+
 ## 1.3.0 — 2026-11-26
 
 `bbw-` prefix and `update`.

@@ -17,6 +17,7 @@ huntr, and self-hosted `security.txt` programs.
 /bbw-programs intigriti "e-commerce"
 /bbw-programs --tech shopify
 /bbw-programs --new        # recently launched programs
+/bbw-programs --fresh      # established programs with newly added surface
 ```
 
 ---
@@ -56,6 +57,26 @@ Rank with this, in order:
 6. **Scope shape** — wildcard-heavy = more surface; one marketing site = dead end.
 
 Write the shortlist to `engagements/shortlist.md` as a table, top 5 only.
+
+### If `--fresh`, look for new surface rather than new programs
+
+An established program that added something last month beats a program that
+launched last month: real bounty table, working triage, and the new asset had no
+reviewer. For each candidate, record what changed and when:
+
+| Signal | How to check |
+|---|---|
+| Scope updated | "last updated" on the program page; diff against your saved scope |
+| Acquisition | press/news page, investor announcements |
+| New product or feature | `/whats-new`, `/changelog`, release notes, docs marked beta |
+| New API version | `/v2`, `/v3`, `/graphql` beside an older REST API |
+| New subdomain | newest `notBefore` entries on `crt.sh` for the domain |
+| New app release | App Store / Play "What's New", version history |
+| Migration | job posts naming a new stack, changed CDN or server header |
+| Deadline feature | tax season, enrolment window, Black Friday, elections |
+
+Score a candidate on **surface added in the last 90 days**, not on program age.
+The full reasoning, and where "new" lies to you, is `references/01`.
 
 ## Step 3 — Pick one and hand off
 

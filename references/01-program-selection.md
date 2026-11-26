@@ -55,6 +55,48 @@ available time.
   object ids, and money movement**. Those four create authorization bugs, and
   authorization bugs are the highest-yield class in the last five years.
 
+## Freshness: hunt new surface, not new programs
+
+Age of program is a weak signal on its own. What predicts a find is **how recently
+the surface changed** and **whether the program pays for what you find there**.
+
+The sweet spot is not the newest program on the platform. It is a program with a
+real bounty table and functioning triage where something was added recently —
+an acquired product, a new feature, a v2 API, a new app version. The flagship app
+may have 4,000 reports against it; the thing they shipped last month has twenty.
+
+| Signal | Where to look | Why it is fresh |
+|---|---|---|
+| Scope updated / expanded | Program page "last updated", scope diff, changelog | Added assets were reviewed by nobody |
+| Acquisition | Press page, "we've acquired X", investor news | Acquired app joins scope later than the buyer's app |
+| New product or feature | `/whats-new`, `/changelog`, release notes, blog, docs "beta" | Shipped after the last pentest, or before the first one |
+| New API version | `/v2`, `/v3`, `/graphql` beside an older REST API | Often built by a different team with different authz |
+| New subdomain | `crt.sh` `notBefore` on the newest certs, CT logs | Newest hosts are the least enumerated |
+| New app release | App Store / Play "What's New", version history | New endpoints in the diff, old ones already picked over |
+| Migration | Job posts naming a new stack, CDN or header change | Rewrites reintroduce old classes |
+| Calendar | Tax season, enrolment windows, Black Friday, elections | Features get built under deadline pressure |
+| Beta / waitlist / labs | `/beta`, `/labs`, invite-only flows | Authz and rate logic are usually incomplete |
+
+**Scope drift is the cheapest signal you have.** Save the scope on day one with
+`/bbw-scope`, then re-run it weekly and diff. Every added asset is a lead that
+costs you one command.
+
+**Where "new" lies to you:**
+
+- Brand-new programs often have a two-week land rush of obvious bugs, then silence,
+  and a triage team still learning its own policy. Real payout table, unreliable
+  acceptance.
+- Launched features frequently had a pentest before launch. The gap is usually in
+  the integration: SSO on the new app, permissions on the new object, the old
+  endpoint that now accepts the new id.
+- Acquisitions are routinely excluded in writing. Read the exclusion list before
+  you get excited about the shiny new domain.
+- A wildcard added with nothing resolving is enumeration cost, not surface.
+
+**Budget rule:** about 70% of your time on the newest surface of a program that
+pays, 30% on the flagship app where depth still wins. Between those two, some of
+your flagships come out of the diff.
+
 ## Programs to skip
 
 - No scope, no rules, "test anything of ours".
