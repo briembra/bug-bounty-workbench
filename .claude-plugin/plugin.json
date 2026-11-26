@@ -1,13 +1,13 @@
 {
-  "name": "bug-bounty-hunter",
+  "name": "bug-bounty-workbench",
   "version": "1.1.0",
   "description": "Authorized bug bounty hunting end to end: program selection, scope, recon, every vulnerability class, evidence, scoring, reporting. Ships 25 slash commands and a full reference method.",
   "author": {
     "name": "briembra",
     "url": "https://github.com/briembra"
   },
-  "homepage": "https://github.com/briembra/bug-bounty-hunter",
-  "repository": "https://github.com/briembra/bug-bounty-hunter",
+  "homepage": "https://github.com/briembra/bug-bounty-workbench",
+  "repository": "https://github.com/briembra/bug-bounty-workbench",
   "license": "MIT",
   "keywords": [
     "bug-bounty",

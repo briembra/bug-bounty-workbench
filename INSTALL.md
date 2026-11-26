@@ -13,8 +13,8 @@ Pick your agent, run the block, done.
 **Plugin (recommended).** Inside Claude Code:
 
 ```
-/plugin marketplace add briembra/bug-bounty-hunter
-/plugin install bug-bounty-hunter@bug-bounty-hunter
+/plugin marketplace add briembra/bug-bounty-workbench
+/plugin install bug-bounty-workbench@bug-bounty-workbench
 ```
 
 Restart the session. `/hunt`, `/programs`, `/scope` and the rest appear in the
@@ -23,18 +23,18 @@ command list, and the skill loads when you ask about a target.
 **Manual.** Clone and copy:
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-hunter
-cd bug-bounty-hunter
+git clone https://github.com/briembra/bug-bounty-workbench
+cd bug-bounty-workbench
 python tools/sync_commands.py --target claude
 ```
 
 That writes `.claude/commands/*.md` (25 commands) and
-`.claude/skills/bug-bounty-hunter/SKILL.md` (the method) into the current project.
+`.claude/skills/bug-bounty-workbench/SKILL.md` (the method) into the current project.
 For a personal install everywhere, copy the same two trees into `~/.claude/`:
 
 ```bash
 cp -r .claude/commands/*  ~/.claude/commands/
-cp -r .claude/skills/bug-bounty-hunter ~/.claude/skills/
+cp -r .claude/skills/bug-bounty-workbench ~/.claude/skills/
 ```
 
 ---
@@ -42,19 +42,19 @@ cp -r .claude/skills/bug-bounty-hunter ~/.claude/skills/
 ## OpenCode
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-hunter
-cd bug-bounty-hunter
+git clone https://github.com/briembra/bug-bounty-workbench
+cd bug-bounty-workbench
 python tools/sync_commands.py --target opencode
 ```
 
-Writes `.opencode/command/*.md` and `.opencode/skill/bug-bounty-hunter/SKILL.md`.
+Writes `.opencode/command/*.md` and `.opencode/skill/bug-bounty-workbench/SKILL.md`.
 OpenCode picks both up from the project root; for a global install, copy the same
 two directories into `~/.config/opencode/`:
 
 ```bash
 mkdir -p ~/.config/opencode/command ~/.config/opencode/skill
 cp -r .opencode/command/* ~/.config/opencode/command/
-cp -r .opencode/skill/bug-bounty-hunter ~/.config/opencode/skill/
+cp -r .opencode/skill/bug-bounty-workbench ~/.config/opencode/skill/
 ```
 
 Then in a session: `/hunt https://app.example.com "Acme" on Intigriti`.
@@ -67,8 +67,8 @@ Codex reads `AGENTS.md` from the working directory automatically, and custom
 prompts from `~/.codex/prompts/`.
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-hunter
-cd bug-bounty-hunter
+git clone https://github.com/briembra/bug-bounty-workbench
+cd bug-bounty-workbench
 python tools/sync_commands.py --target codex
 mkdir -p ~/.codex/prompts
 cp .codex/prompts/*.md ~/.codex/prompts/
@@ -83,8 +83,8 @@ it at the path in your first message.
 ## Cursor
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-hunter
-cd bug-bounty-hunter
+git clone https://github.com/briembra/bug-bounty-workbench
+cd bug-bounty-workbench
 python tools/sync_commands.py --target cursor
 ```
 
@@ -92,7 +92,7 @@ Writes `.cursor/commands/*.md`. Add the method as a project rule so the agent
 always has it:
 
 ```
-.cursor/rules/bug-bounty-hunter.mdc
+.cursor/rules/bug-bounty-workbench.mdc
 ---
 description: Authorized bug bounty hunting method
 globs:
@@ -162,8 +162,8 @@ start with `---` on line 1, have a `description:`, and close with `---`.
 ## Uninstall
 
 ```bash
-rm -rf .claude/commands .claude/skills/bug-bounty-hunter
-rm -rf .opencode/command .opencode/skill/bug-bounty-hunter
+rm -rf .claude/commands .claude/skills/bug-bounty-workbench
+rm -rf .opencode/command .opencode/skill/bug-bounty-workbench
 rm -rf .cursor/commands .codex/prompts
 ```
 

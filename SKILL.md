@@ -1,12 +1,12 @@
 ---
-name: bug-bounty-hunter
+name: bug-bounty-workbench
 description: Hunt bugs on authorized bug bounty and VDP programs end to end. Use when the task is to find, validate, or report a vulnerability against an in-scope target on HackerOne, Bugcrowd, Intigriti, YesWeHack, Immunefi, Open Bug Bounty, or a self-hosted program. Covers program selection and scope parsing, recon and asset discovery, attack-surface mapping, vulnerability-class hunting (BOLA/IDOR, auth and session, injection, SSRF, XSS, file handling, business logic, API/GraphQL, cloud, secrets, cache/protocol, subdomain takeover, mobile, AI/LLM surfaces), evidence standards, severity scoring, report writing, and triage/dedup. Not for exploiting systems outside an authorized scope, denial of service, or social engineering of real people.
 metadata:
   version: "1"
   license: MIT
 ---
 
-# Bug Bounty Hunter
+# Bug Bounty Workbench
 
 A complete operating system for authorized bug bounty work. The goal is not
 "find something" — it is **find a real, reproducible, in-scope vulnerability,

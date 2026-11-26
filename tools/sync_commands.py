@@ -105,9 +105,9 @@ def main() -> int:
     skill_source = REPO / "SKILL.md"
     if skill_source.exists() and args.target in {"claude", "opencode"}:
         skill_dir = (
-            REPO / ".claude/skills/bug-bounty-hunter"
+            REPO / ".claude/skills/bug-bounty-workbench"
             if args.target == "claude"
-            else REPO / ".opencode/skill/bug-bounty-hunter"
+            else REPO / ".opencode/skill/bug-bounty-workbench"
         )
         # The skill is the router plus everything it links to, so relative links
         # inside SKILL.md keep resolving after the copy.

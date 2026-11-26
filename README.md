@@ -1,4 +1,4 @@
-# Bug Bounty Hunter
+# Bug Bounty Workbench
 
 An agent skill for authorized bug bounty hunting — from picking a program to a
 report a triager accepts without asking a question.
@@ -17,8 +17,8 @@ method, and waits for a target.
 Or do it by hand:
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-hunter
-cd bug-bounty-hunter
+git clone https://github.com/briembra/bug-bounty-workbench
+cd bug-bounty-workbench
 python tools/sync_commands.py --target opencode   # or: claude, cursor, codex
 ```
 
