@@ -7,7 +7,7 @@ Point any capable AI agent at this repository and it has a working method, a
 working toolkit, and hard rules about scope and evidence.
 
 ```
-You:  "https://github.com/briembra/bbh — hunt <program>, in scope only."
+You:  "https://github.com/briembra/bug-bounty-hunter — hunt <program>, in scope only."
 AI:   reads SKILL.md → routes to scope + recon → hunts → writes the report
 ```
 
@@ -30,14 +30,14 @@ hygiene, and the refusal surface.
 | `checklists/` | 15 testable checklists, one per class plus submission. |
 | `templates/` | Report templates for Intigriti, HackerOne, Bugcrowd, YesWeHack; PoC and CVSS worksheets. |
 | `prompts/` | Role prompts: recon planner, class selector, triage reviewer, report editor, dedup analyst, exploit reviewer. |
-| `tools/` | 12 runnable Python tools: scope, subdomains, probe, exposure, secrets, unauth JSON, GraphQL, JWT, IDOR diff, CVSS, report builder, scope diff. |
+| `tools/` | 13 runnable Python tools: scope, subdomains, probe, exposure, secrets, unauth JSON, GraphQL, JWT, IDOR diff, CVSS, report builder, scope diff, link checker. |
 | `data/` | Severity matrix, common paths, sensitive patterns, payload references. |
 
 ## Quick start
 
 ```bash
-git clone https://github.com/briembra/bbh
-cd bbh
+git clone https://github.com/briembra/bug-bounty-hunter
+cd bug-bounty-hunter
 pip install -r tools/requirements.txt
 ```
 

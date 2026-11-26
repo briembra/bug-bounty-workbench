@@ -87,7 +87,7 @@ budget:       <N requests / <rate> per second>
 timebox:      <hours>
 test accounts: <yes/no, email>
 listener:     <interactsh domain>
-marker:       bbh-<date>-<rand>
+marker:       bbtest-<date>-<rand>
 rules flags:  <e.g. "no automated scanning">
 ```
 

@@ -92,7 +92,7 @@ otherwise. Back off on 429/503. If a WAF starts returning 403 for everything,
 stop and reduce.
 
 **Test data hygiene.** Mark every object you create with a recognizable tag
-(`bbh-test-<date>`). Delete what you can. Do not leave uploaded shells, test
+(`bbtest-<date>`). Delete what you can. Do not leave uploaded shells, test
 users, or open test cases.
 
 ---

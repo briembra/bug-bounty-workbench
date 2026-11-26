@@ -25,7 +25,7 @@ The best target: **input you control that renders in an admin/support panel.**
 Submit a unique marker:
 
 ```
-xssBBH<random>
+xssBBtest<random>
 ```
 
 Find where it appears in the raw response (not the rendered page). Note the

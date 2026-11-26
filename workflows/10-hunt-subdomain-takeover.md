@@ -61,7 +61,7 @@ CNAME** — Low/Medium, not a takeover.
 ## Step 4 — Prove (10 min)
 
 1. Claim the resource.
-2. Serve a harmless marker: `<h1>bbh-takeover-<rand></h1>`.
+2. Serve a harmless marker: `<h1>bbtest-takeover-<rand></h1>`.
 3. `curl https://sub.example.com/` → show the marker.
 4. **Delete the resource immediately.**
 5. Keep the request/response and a screenshot.

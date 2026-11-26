@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Authorized bug bounty hunting skill.",
   "author": "briembra",
-  "homepage": "https://github.com/briembra/bbh",
+  "homepage": "https://github.com/briembra/bug-bounty-hunter",
   "license": "MIT",
   "skills": [
     {

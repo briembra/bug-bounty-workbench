@@ -70,7 +70,7 @@ name claiming is a **dangling CNAME** (Low/Medium at best).
 ## Proof (safe, reversible)
 
 1. Create the resource in your own account (e.g. a Heroku app named `project`).
-2. Serve a harmless page: `<h1>bbh-takeover-proof-<random></h1>`.
+2. Serve a harmless page: `<h1>bbtest-takeover-proof-<random></h1>`.
 3. Fetch `https://sub.example.com/` and show your marker.
 4. **Delete the resource immediately** after capturing evidence.
 5. Never serve phishing, never log visitors, never keep it.

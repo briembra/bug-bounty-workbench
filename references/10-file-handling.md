@@ -37,10 +37,10 @@ Test each independently. A failure in any one row can be High.
 Do **not** upload a web shell and leave it. Prove minimally:
 
 ```
-<?php echo "BBH".(7*7); ?>
+<?php echo "BBTEST".(7*7); ?>
 ```
 
-If the response is `BBH49`, you have code execution. Delete the file if you can,
+If the response is `BBTEST49`, you have code execution. Delete the file if you can,
 and report. Never upload a full interactive shell to production.
 
 ---
@@ -93,7 +93,7 @@ Where: "rename", "move", "export to", "save as", backup restore, avatar path.
 - Delete a file by path → data loss (do not do this on real users' files).
 - Symlink attack: upload a symlink to `/etc/passwd`, then download it.
 
-Prove write with a harmless file (`bbh-test.txt`) in a directory you control, and
+Prove write with a harmless file (`bbtest.txt`) in a directory you control, and
 delete it.
 
 ---

@@ -6,8 +6,8 @@
   "author": {
     "name": "briembra"
   },
-  "homepage": "https://github.com/briembra/bbh",
-  "repository": "https://github.com/briembra/bbh",
+  "homepage": "https://github.com/briembra/bug-bounty-hunter",
+  "repository": "https://github.com/briembra/bug-bounty-hunter",
   "license": "MIT",
   "keywords": [
     "bug-bounty",

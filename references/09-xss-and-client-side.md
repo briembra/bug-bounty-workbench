@@ -62,7 +62,7 @@ jav&#x09;ascript:alert(1)
 {{constructor.constructor('alert(1)')()}}     <!-- Angular sandbox escape era -->
 ```
 
-**Use a unique marker** (`xssBBH<random>`) so you can grep the response and count
+**Use a unique marker** (`xssBBtest<random>`) so you can grep the response and count
 occurrences. If the marker appears escaped (`&lt;`), the encoding is working.
 
 ---

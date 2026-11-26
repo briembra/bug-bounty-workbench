@@ -9,7 +9,7 @@ it, keep your accounts, and avoid accidentally becoming the incident.
 
 - Use **one** researcher identity per platform. Do not sybil.
 - Use **program-provided test accounts** if the program supplies them.
-- If you must register, use a dedicated address (`you+bbh@yourdomain`) and a
+- If you must register, use a dedicated address (`you+bb@yourdomain`) and a
   unique password per program. Never reuse a personal password.
 - Never test with a real customer's account, a colleague's account, or a
   friend's account.
@@ -135,7 +135,7 @@ quiet cover-up.
 - [ ] Listener ready and unique.
 - [ ] Two test accounts ready (or a plan if registration is blocked).
 - [ ] `findings/` folder created and gitignored.
-- [ ] Marker string chosen (`bbh-<date>-<rand>`).
+- [ ] Marker string chosen (`bbtest-<date>-<rand>`).
 - [ ] Time box set.
 
 If any box is unchecked, fix it before the first request.

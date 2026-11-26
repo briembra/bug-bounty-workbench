@@ -16,7 +16,7 @@
 
 ## Proof
 
-- [ ] Harmless marker served (`bbh-takeover-<rand>`).
+- [ ] Harmless marker served (`bbtest-takeover-<rand>`).
 - [ ] `curl` shows the marker.
 - [ ] Request/response + screenshot captured.
 - [ ] Resource **deleted** immediately.
