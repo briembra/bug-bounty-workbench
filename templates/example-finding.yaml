@@ -1,0 +1,28 @@
+title: "Any customer can read any other customer's order history and PII via order id"
+severity: high
+cvss: "AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:N/A:N"
+cwe: "CWE-639"
+asset: "https://app.example.com/api/orders/{id}"
+summary: |
+  The order detail endpoint returns any order by id without checking that it
+  belongs to the caller. Any authenticated customer can read another customer's
+  name, address, phone and card last-4 by changing the id.
+steps:
+  - "Log in as account A; POST /api/orders; note id 1042."
+  - "Log in as account B; POST /api/orders; note id 1043."
+  - "As account A, GET /api/orders/1043."
+  - "Observe B's data returned in the response."
+evidence:
+  - request-01.http
+  - response-01.http
+  - request-02.http
+  - response-02.http
+  - screenshot-01.png
+impact: |
+  Any customer can read any other customer's PII and order history by
+  incrementing the id. There is no rate limit, so the full customer base is
+  enumerable. GDPR-relevant personal data disclosure.
+remediation: |
+  Filter by session user in the query:
+  Order.objects.get(id=id, user_id=request.user.id), returning 404 for non-owners.
+  Apply the same to /api/orders/{id}/items and GET /api/orders/export.

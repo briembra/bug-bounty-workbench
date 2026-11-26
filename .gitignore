@@ -1,0 +1,26 @@
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+.env
+node_modules/
+dist/
+build/
+*.egg-info/
+
+# engagement output — never commit real target data
+out/
+findings/
+scope.json
+subs.json
+alive.json
+exposures.json
+secrets.json
+collections.json
+
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

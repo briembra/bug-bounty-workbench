@@ -1,0 +1,14 @@
+{
+  "name": "bug-bounty-hunter",
+  "version": "1.0.0",
+  "description": "Authorized bug bounty hunting skill.",
+  "author": "briembra",
+  "homepage": "https://github.com/briembra/bbh",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "bug-bounty-hunter",
+      "path": "./SKILL.md"
+    }
+  ]
+}

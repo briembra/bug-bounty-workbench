@@ -1,0 +1,157 @@
+# Parameters worth trying on any endpoint — objects, authz, mass assignment,
+# debug, SSRF, redirect, pagination. Use as a checklist, not a blind fuzz.
+#
+# One per line. Grouped by intent with blank-line-separated comment headers.
+
+# --- identity / object ---
+id
+user_id
+userId
+uid
+account_id
+accountId
+customer_id
+customerId
+member_id
+org_id
+orgId
+organization_id
+tenant_id
+tenantId
+company_id
+team_id
+project_id
+owner_id
+ownerId
+created_by
+parent_id
+ref_id
+
+# --- auth / role ---
+role
+roles
+is_admin
+isAdmin
+admin
+is_superuser
+permissions
+scope
+group
+level
+type
+status
+verified
+is_verified
+email_verified
+active
+enabled
+
+# --- mass assignment / billing ---
+price
+amount
+total
+subtotal
+discount
+coupon
+promo
+credit
+credits
+balance
+plan
+plan_id
+tier
+quantity
+qty
+currency
+tax
+fee
+paid
+
+# --- redirect / SSRF ---
+url
+uri
+link
+next
+redirect
+redirect_uri
+redirect_url
+return
+returnUrl
+return_to
+continue
+target
+dest
+destination
+callback
+callback_url
+webhook
+fetch
+import
+load
+src
+source
+host
+domain
+path
+file
+fileUrl
+image
+avatar
+page_url
+context_url
+
+# --- debug / control ---
+debug
+test
+dev
+verbose
+trace
+admin_debug
+dry_run
+preview
+format
+output
+export
+download
+lang
+locale
+template
+view
+render
+raw
+pretty
+
+# --- pagination / projection ---
+page
+limit
+offset
+per_page
+page_size
+size
+start
+end
+since
+until
+sort
+order
+order_by
+fields
+include
+expand
+select
+filter
+q
+search
+query
+
+# --- headers to try (sent as headers, not query) ---
+# X-Forwarded-Host: evil.example
+# X-Forwarded-Scheme: nothttps
+# X-Forwarded-For: 127.0.0.1
+# X-Original-URL: /admin
+# X-Rewrite-URL: /admin
+# X-User-Id: 1
+# X-Internal: true
+# X-Debug: 1
+# X-Forwarded-Prefix: /admin
+# Forwarded: for=127.0.0.1;host=evil.example

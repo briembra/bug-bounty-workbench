@@ -1,0 +1,46 @@
+# Subdomain takeover fingerprints.
+# Format: service | cname_suffix_or_marker | unclaimed_response_substring
+#
+# A matching response is a CANDIDATE. Proof requires that you can claim the
+# resource. A 404 alone is not a takeover.
+
+heroku | herokudns.com | No such app
+heroku-alt | herokuapp.com | There's nothing here, yet.
+s3 | s3.amazonaws.com | NoSuchBucket
+s3-alt | s3-website | NoSuchBucket
+cloudfront | cloudfront.net | Bad request
+azure-websites | azurewebsites.net | 404 Web Site not found
+azure-cloudapp | cloudapp.azure.com | 404 Not Found
+github-pages | github.io | There isn't a GitHub Pages site here.
+bitbucket | bitbucket.io | Repository not found
+netlify | netlify.app | Not found - Request ID:
+vercel | vercel.app | The deployment could not be found
+surge | surge.sh | project not found
+readme | readme.io | Project doesnt exist... yet!
+statuspage | statuspage.io | This page is reserved for future use
+zendesk | zendesk.com | Help Center Closed
+freshdesk | freshdesk.com | There is no helpdesk here
+helpscout | helpscout.net | No settings were found for this company
+intercom | intercom.help | This page is reserved for future use
+shopify | myshopify.com | Sorry, this shop is currently unavailable.
+tumblr | tumblr.com | There's nothing here.
+wordpress-com | wordpress.com | Do you want to register
+wpengine | wpengine.com | 404
+ghost | ghost.io | Domain error
+gitbook | gitbook.io | 404 Not Found
+pantheon | pantheonsite.io | The gods are wise, but do not know of the site
+unbounce | unbounce.com | The requested URL was not found
+instapage | instapage.com | 404
+leadpages | leadpages.net | 404
+cargo | cargocollective.com | 404 Not Found
+bigcartel | bigcartel.com | 404 Not Found
+kajabi | kajabi.com | 404
+thinkific | thinkific.com | 404
+uservoice | uservoice.com | 404
+agilecrm | agilecrm.com | 404
+canny | canny.io | 404
+pingdom | pingdom.com | 404
+strikingly | strikingly.com | 404
+fastly | fastly.net | Fastly error: unknown domain
+ngrok | ngrok.io | 404
+ngrok-free | ngrok-free.app | 404

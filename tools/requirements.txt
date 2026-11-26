@@ -1,0 +1,22 @@
+# Bug Bounty Hunter tools — dependencies
+#
+# Every tool in this directory is standard-library only, so this file is
+# optional. It exists so `pip install -r tools/requirements.txt` works and so
+# optional helpers can be added without breaking that workflow.
+#
+# Core: nothing required (Python 3.10+).
+#
+# Optional helpers used by the surrounding shell workflow (install separately
+# if you want the full recon pipeline):
+#
+#   subfinder, amass, dnsx, httpx   (ProjectDiscovery)
+#   interactsh-client               (blind SSRF/XSS/XXE listener)
+#   js-beautify (npm)               (readable JS bundles)
+#
+# They are not Python packages, so they are listed here as a comment rather
+# than as requirements.
+
+# --- optional python helpers (uncomment if you extend the tools) ---
+# requests>=2.31
+# dnspython>=2.6
+# pyyaml>=6.0

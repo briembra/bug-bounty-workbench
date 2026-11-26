@@ -1,0 +1,33 @@
+# Sensitive patterns — reference for manual review and tool extension.
+# Format: name | regex | confidence | notes
+#
+# tools/secrets.py carries a compatible built-in list. Use this file to extend
+# it, or to check a bundle by hand.
+
+aws_access_key | AKIA[0-9A-Z]{16} | likely-live | Verify with `aws sts get-caller-identity`; never mutate.
+aws_secret_key | [A-Za-z0-9/+=]{40} | low | Only when adjacent to an AKIA key; otherwise noise.
+github_pat_classic | ghp_[A-Za-z0-9]{36} | likely-live | `GET https://api.github.com/user` with the token.
+github_pat_fine | github_pat_[A-Za-z0-9_]{82} | likely-live | Check scopes in `X-OAuth-Scopes`.
+github_oauth | gho_[A-Za-z0-9]{36} | likely-live | OAuth token; same check.
+slack_token | xox[baprs]-[A-Za-z0-9-]{10,} | likely-live | `auth.test` returns the workspace.
+stripe_secret | sk_live_[A-Za-z0-9]{24,} | likely-live | `GET /v1/account` with `-u "<sk>:"`.
+stripe_restricted | rk_live_[A-Za-z0-9]{24,} | likely-live | Restricted key; check the scope.
+sendgrid | SG\.[A-Za-z0-9_-]{22}\.[A-Za-z0-9_-]{43} | likely-live | `GET /v3/user/account`.
+twilio_sid | AC[a-f0-9]{32} | format-only | Needs the auth token beside it.
+twilio_auth | [a-f0-9]{32} | low | Only in a Twilio context.
+google_api_key | AIza[0-9A-Za-z_-]{35} | format-only | Check referrer/API restrictions; often public.
+firebase_config | "?apiKey"?\s*:\s*"AIza[^"]+" | public | Public by design; not a secret.
+private_key | -----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY----- | likely-live | Critical if it authenticates anything.
+jwt | eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,} | format-only | Fingerprint with tools/jwt_tool.py.
+slack_webhook | hooks\.slack\.com/services/T[A-Za-z0-9]+/B[A-Za-z0-9]+/[A-Za-z0-9]+ | likely-live | Posting is a write — do not post. Test with an invalid payload only if allowed.
+discord_webhook | discord(app)?\.com/api/webhooks/[0-9]+/[A-Za-z0-9_-]+ | likely-live | Same: do not post.
+s3_url | https?://[a-z0-9.-]+\.s3[.-][a-z0-9.-]*amazonaws\.com[^"'\s]* | recon | Check list/ACL.
+gcs_url | https?://storage\.googleapis\.com/[^"'\s]+ | recon | Check public read.
+azure_blob | https?://[a-z0-9]+\.blob\.core\.windows\.net/[^"'\s]+ | recon | Check container access.
+internal_host | https?://[a-z0-9.-]+\.(internal|local|corp|lan)[:/] | recon | Often an internal API — SSRF target.
+
+# Known test fixtures to ignore:
+#   AKIAIOSFODNN7EXAMPLE
+#   your-api-key, xxxxxxxx, <token>, {token}
+#   AIza… values in Firebase config objects
+#   pk_live_… (publishable Stripe key)

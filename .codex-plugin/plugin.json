@@ -1,0 +1,15 @@
+{
+  "name": "bug-bounty-hunter",
+  "version": "1.0.0",
+  "description": "Authorized bug bounty hunting skill: program selection, recon, vulnerability classes, evidence, severity, reporting, triage.",
+  "author": "briembra",
+  "homepage": "https://github.com/briembra/bbh",
+  "license": "MIT",
+  "skills": [
+    {
+      "name": "bug-bounty-hunter",
+      "path": "./SKILL.md",
+      "description": "Hunt bugs on authorized programs end to end."
+    }
+  ]
+}
