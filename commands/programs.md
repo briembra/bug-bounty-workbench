@@ -36,9 +36,10 @@ Fetch the public directory pages and record what you find:
 | huntr | `https://huntr.com/bounties` (open-source AI/ML) |
 | Open Bug Bounty | `https://openbugbounty.org` (VDP, no reward) |
 
-For each candidate, capture: name, platform, program URL, bounty range, response
-time, resolved report count, whether test accounts are provided, whether automated
-scanning is allowed, and the launch date.
+For each candidate, capture: name, platform, program URL, bounty range, **median
+time to first response**, **median time to bounty**, **whether a bounty was paid in
+the last 30 days**, resolved report count, whether test accounts are provided,
+whether automated scanning is allowed, and the launch date.
 
 **Self-hosted:** search `intext:"security.txt" inurl:/.well-known` plus the
 `safe-harbor` and `policy` fields; a company with a policy and no platform is a
@@ -52,15 +53,18 @@ because on a four-year-old program the reachable bugs are already gone.
 1. **Surface age** — score the *newest asset in scope*, not the program: under 3
    months is 5, 3–6 is 4, 6–12 is 3, 12–24 is 1, older with thousands of resolved
    reports is 0. Anything scoring 0 is skipped unless you have a real edge.
-2. **Bounty ≥ your floor**, and pays the classes you actually find.
-3. **Slow triage or huge resolved count** — deprioritise; likely mined out.
-4. **Exclusions** that kill your strengths (e.g. "no auth bugs", "no IDOR").
-5. **Test account policy** — programs that give accounts are worth far more,
+2. **Payout speed** — median time to bounty, and whether anything was paid in the
+   last 30 days. Under 30 days is good, over 60 is a warning about the whole
+   program, not just the money. Record the median, not the average.
+3. **Bounty ≥ your floor**, and pays the classes you actually find.
+4. **Slow triage or huge resolved count** — deprioritise; likely mined out.
+5. **Exclusions** that kill your strengths (e.g. "no auth bugs", "no IDOR").
+6. **Test account policy** — programs that give accounts are worth far more,
    because BOLA and logic bugs need two sessions.
-6. **Scope shape** — wildcard-heavy = more surface; one marketing site = dead end.
+7. **Scope shape** — wildcard-heavy = more surface; one marketing site = dead end.
 
 Write the shortlist to `engagements/shortlist.md` as a table, top 5 only, with the
-surface-age score in its own column.
+surface-age score and the median payout days in their own columns.
 
 ### If `--fresh`, look for new surface rather than new programs
 
@@ -97,7 +101,7 @@ Never start two programs at once. Depth beats breadth — `references/26`.
 
 ```
 Top 5 (ranked)
-1. <program> — <platform> — <why it ranks first> — <scope size> — <bounty>
+1. <program> — <platform> — surface age <n> — median payout <n> days — <why it ranks first> — <scope size> — <bounty>
 ...
 Recommendation: start <program>; first asset <host>; first class <class>.
 ```

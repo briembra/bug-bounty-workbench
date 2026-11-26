@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.4 — 2026-11-26
+
+Payout speed is part of the ranking.
+
+- `references/01` gains **How fast it pays**: where each platform publishes
+  response and payout medians, what to record per candidate, an expected-value
+  formula that weights the payout wait, and the red flags (nothing paid in 90
+  days, "at our discretion" with no history, one huge critical two years ago and
+  silence since).
+- Ranking in `/bbw-programs` is now surface age → payout speed → bounty floor →
+  triage → exclusions → test accounts → scope shape. Shortlist carries the median
+  payout days in its own column.
+- Signal table gains a payout-speed row: under 30 days is good, 90+ is a warning.
+- Rule of thumb: among candidates that pass the surface-age gate, prefer the one
+  that pays a median you would accept, in under 30 days, recently.
+
 ## 1.3.3 — 2026-11-26
 
 Default is the newest surface, not the flagship.

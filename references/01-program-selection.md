@@ -15,6 +15,7 @@ available time.
 | Asset type | Customer-facing apps, APIs, auth, payments | Static brochure pages |
 | Age of program | 0–12 months, still finding bugs | 4+ years, mined out |
 | Response time | Median < 7 days | Weeks of silence |
+| Payout speed | Median report-to-money < 30 days, paid recently | 90+ days, nothing paid in months |
 | Bounty | Pays for the classes you hunt | VDP only, or pays only critical |
 | Rules | Clear, permissive, test accounts allowed | Vague, "no automated tools", ambiguous |
 | Duplicates | New program, low participant count | 3,000 researchers, 500 reports |
@@ -89,6 +90,60 @@ program launched last month with one marketing site.
 **Scope drift is the cheapest signal you have.** Save the scope on day one with
 `/bbw-scope`, then re-run it weekly and diff. Every added asset is a lead that
 costs you one command.
+
+## How fast it pays
+
+A paid bug in six months is worse than a paid bug in three weeks. Money you cannot
+plan on is not money, and a program that sits on reports is a program whose
+researchers leave. Time-to-payout belongs in the ranking next to bounty size.
+
+Every platform publishes the numbers; read them instead of guessing:
+
+| Platform | Where the numbers are |
+|---|---|
+| HackerOne | Program page "Response Efficiency" — average time to first response, time to triage, time to bounty, time to resolution. Disclosed reports show each transition with dates. |
+| Bugcrowd | Program page shows average payout and reward range; the activity feed shows recent submissions and their state. |
+| Intigriti | Program page shows response time and average payout; disclosed reports carry the full timeline. |
+| YesWeHack | Program page shows average bounty and response time. |
+| Immunefi | Per-program payout terms; severity-based fixed amounts, paid in crypto. |
+
+Median beats average on every one of these. A program with a 30-day average is
+usually a program with a fast median and two abandoned reports from 2021.
+
+**What to record per candidate:**
+
+- Median time to first response (hours or days)
+- Median time to bounty, report to money
+- Average or median bounty paid, and the floor for the class you hunt
+- Paid-report ratio: how many reports actually result in a reward
+- Recent activity: any bounty paid in the last 30 days
+
+**How to weigh it.** A rough expected value per hunting hour, in the order the
+factors actually bite:
+
+```
+EV ≈ P(accept) × median_bounty ÷ (hunt_hours + payout_wait_in_working_days × 0.2)
+```
+
+The 0.2 is a deliberately small weight: waiting is not work, but a program that
+pays in 180 days also triages in 180 days, which means your next three reports are
+sitting in the same queue. Treat a payout lag over 60 days as a signal about the
+whole program, not just the money.
+
+**Red flags that override a good payout number:**
+
+- No bounty paid in the last 90 days on a program that claims bounties.
+- Payout terms changed recently, or "bounty at our discretion" with no published
+  history.
+- Currency or payment method you cannot actually receive, or a threshold below
+  the platform's payout minimum.
+- A high average bounty produced by one huge critical two years ago and nothing
+  since. Read the distribution, not the headline.
+
+**The practical rule:** among candidates that pass the surface-age gate, prefer the
+one that pays a *median* you would accept, in under 30 days, on reports they have
+paid recently. A slightly smaller bounty that lands in three weeks funds the next
+month of hunting. A large bounty that lands in six months does not.
 
 ## Score by months since the surface changed
 
