@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.2.0 — 2026-11-26
+
+One-line install.
+
+- npm package: `npx bug-bounty-workbench setup`. Detects Claude Code, OpenCode,
+  Cursor or Codex, writes the 25 commands and the method into that agent's
+  directories, records what it wrote in `.bbw-manifest.json`.
+- `npx bug-bounty-workbench status` reports files present vs recorded;
+  `uninstall` removes exactly what `setup` wrote and nothing else.
+- Also installable before an npm release: `npx github:briembra/bug-bounty-workbench setup`.
+- `bin/bbw.mjs` + `lib/agents.mjs` + `lib/install.mjs`, no dependencies,
+  Node 18+.
+- `PROMPT.md` down to a five-line block: run the npx command, read `SKILL.md` and
+  `AGENTS.md`, reply in three lines.
+- `INSTALL.md` leads with the npx path; plugin, Python and no-shell paths kept as
+  fallbacks.
+- Repository renamed to `bug-bounty-workbench`.
+
 ## 1.1.0 — 2026-11-26
 
 Commands and installers.

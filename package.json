@@ -1,0 +1,54 @@
+{
+  "name": "bug-bounty-workbench",
+  "version": "1.2.0",
+  "description": "Authorized bug bounty hunting, installed into your agent. 25 slash commands, 26 references, 13 workflows, 15 checklists, stdlib-only tools. `npx bug-bounty-workbench setup`.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "bug-bounty-workbench": "bin/bbw.mjs",
+    "bbw": "bin/bbw.mjs"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "commands/",
+    "references/",
+    "workflows/",
+    "checklists/",
+    "templates/",
+    "prompts/",
+    "data/",
+    "tools/",
+    "SKILL.md",
+    "AGENTS.md",
+    "PROMPT.md",
+    "INSTALL.md",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "DISCLAIMER.md"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "bug-bounty",
+    "security",
+    "pentest",
+    "recon",
+    "hackerone",
+    "bugcrowd",
+    "intigriti",
+    "ai-agent",
+    "skill"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/briembra/bug-bounty-workbench.git"
+  },
+  "homepage": "https://github.com/briembra/bug-bounty-workbench",
+  "bugs": {
+    "url": "https://github.com/briembra/bug-bounty-workbench/issues"
+  },
+  "author": "briembra"
+}

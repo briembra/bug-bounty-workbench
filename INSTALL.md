@@ -1,144 +1,96 @@
 # Install
 
-Four agents, four paths. Every one of them ends with 25 `/` commands and the
-method loaded. Nothing needs `pip install` — the tools are standard-library
-Python 3.10+.
+Node 18+. No dependencies, no build step.
 
-Pick your agent, run the block, done.
+```bash
+npx bug-bounty-workbench setup
+```
+
+That is the whole install for Claude Code, OpenCode, Cursor and Codex. It detects
+which agent you are in, copies the 25 commands and the method into that agent's
+directories, records exactly what it wrote, and prints the next command.
+
+```bash
+npx bug-bounty-workbench setup --agent claude --global   # user-level dirs
+npx bug-bounty-workbench setup --agent claude,opencode   # more than one
+npx bug-bounty-workbench setup --dry-run                 # print the plan
+npx bug-bounty-workbench status                          # files present vs recorded
+npx bug-bounty-workbench uninstall                       # remove what setup wrote
+npx bug-bounty-workbench --help
+```
+
+Not published to npm yet? Install straight from the repository:
+
+```bash
+npx github:briembra/bug-bounty-workbench setup
+```
 
 ---
 
-## Claude Code
+## Where it writes
 
-**Plugin (recommended).** Inside Claude Code:
+| Agent | Project | Global (`--global`) |
+|---|---|---|
+| Claude Code | `.claude/commands`, `.claude/skills/bug-bounty-workbench` | `~/.claude/…` |
+| OpenCode | `.opencode/command`, `.opencode/skill/bug-bounty-workbench` | `~/.config/opencode/…` |
+| Cursor | `.cursor/commands` | `~/.cursor/commands` |
+| Codex | — | `~/.codex/prompts` |
+
+Detection: project markers first (`.claude/`, `.opencode/`, `.cursor/`, `.codex/`),
+then the process environment (`CLAUDECODE`, `OPENCODE`, `CURSOR_TRACE_ID`,
+`CODEX_HOME`). If neither hits, pass `--agent`.
+
+A `.bbw-manifest.json` in the project root (or `~`) lists every file written, so
+`uninstall` removes those and nothing else.
+
+---
+
+## Claude Code plugin
+
+If you prefer the plugin loader over the CLI:
 
 ```
 /plugin marketplace add briembra/bug-bounty-workbench
 /plugin install bug-bounty-workbench@bug-bounty-workbench
 ```
 
-Restart the session. `/hunt`, `/programs`, `/scope` and the rest appear in the
-command list, and the skill loads when you ask about a target.
+Restart the session. Same 25 commands, same skill.
 
-**Manual.** Clone and copy:
+---
+
+## No Node
+
+**Python path** — clone and copy:
 
 ```bash
 git clone https://github.com/briembra/bug-bounty-workbench
 cd bug-bounty-workbench
-python tools/sync_commands.py --target claude
+python tools/sync_commands.py --target opencode   # or: claude, cursor, codex
 ```
 
-That writes `.claude/commands/*.md` (25 commands) and
-`.claude/skills/bug-bounty-workbench/SKILL.md` (the method) into the current project.
-For a personal install everywhere, copy the same two trees into `~/.claude/`:
+`--dir <path>` writes to any command directory. `--dry-run` lists first.
 
-```bash
-cp -r .claude/commands/*  ~/.claude/commands/
-cp -r .claude/skills/bug-bounty-workbench ~/.claude/skills/
-```
+**No shell at all** — paste the block in [`PROMPT.md`](PROMPT.md). The agent reads
+`SKILL.md` and `AGENTS.md` from the URL and treats `commands/*.md` as procedures.
 
 ---
 
-## OpenCode
+## Verify
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-workbench
-cd bug-bounty-workbench
-python tools/sync_commands.py --target opencode
+npx bug-bounty-workbench status
 ```
 
-Writes `.opencode/command/*.md` and `.opencode/skill/bug-bounty-workbench/SKILL.md`.
-OpenCode picks both up from the project root; for a global install, copy the same
-two directories into `~/.config/opencode/`:
+```
+bug-bounty-workbench 1.2.0
 
-```bash
-mkdir -p ~/.config/opencode/command ~/.config/opencode/skill
-cp -r .opencode/command/* ~/.config/opencode/command/
-cp -r .opencode/skill/bug-bounty-workbench ~/.config/opencode/skill/
+ok    claude  project  133/133 files  2026-11-26T17:57:01.616Z
 ```
 
-Then in a session: `/hunt https://app.example.com "Acme" on Intigriti`.
+`drift` means a file recorded in the manifest is gone — usually another tool
+cleaned the directory. Re-run `setup`.
 
----
-
-## Codex
-
-Codex reads `AGENTS.md` from the working directory automatically, and custom
-prompts from `~/.codex/prompts/`.
-
-```bash
-git clone https://github.com/briembra/bug-bounty-workbench
-cd bug-bounty-workbench
-python tools/sync_commands.py --target codex
-mkdir -p ~/.codex/prompts
-cp .codex/prompts/*.md ~/.codex/prompts/
-```
-
-Codex strips the frontmatter keys it does not define and keeps the procedure.
-Run it from the cloned directory so `AGENTS.md` and `SKILL.md` resolve, or point
-it at the path in your first message.
-
----
-
-## Cursor
-
-```bash
-git clone https://github.com/briembra/bug-bounty-workbench
-cd bug-bounty-workbench
-python tools/sync_commands.py --target cursor
-```
-
-Writes `.cursor/commands/*.md`. Add the method as a project rule so the agent
-always has it:
-
-```
-.cursor/rules/bug-bounty-workbench.mdc
----
-description: Authorized bug bounty hunting method
-globs:
-alwaysApply: true
----
-```
-
-…with the contents of `SKILL.md` under the frontmatter, or simply paste the block
-from [`PROMPT.md`](PROMPT.md) into the chat once.
-
----
-
-## Any other agent
-
-Two options, both work:
-
-**One prompt.** Copy the block in [`PROMPT.md`](PROMPT.md). It tells the agent to
-read `SKILL.md` and `AGENTS.md` from the repository and follow the routes. The
-25 commands are then procedures the agent runs by reading
-`commands/<name>.md`.
-
-**Copy the files.** Any agent with a command or prompt directory:
-
-```bash
-python tools/sync_commands.py --dir <your-agent>/commands
-```
-
----
-
-## Verify the install
-
-```bash
-python tools/sync_commands.py --dry-run --target opencode   # lists 25
-ls .opencode/command | wc -l                                 # 25
-```
-
-Then in the agent:
-
-```
-/hunt --help
-```
-
-…or just `/hunt https://app.example.com` on a target you are authorized to test.
-
-If the commands do not appear, the frontmatter is the usual cause: the file must
-start with `---` on line 1, have a `description:`, and close with `---`.
+Then in the agent: `/hunt https://app.example.com`.
 
 ---
 
@@ -148,11 +100,11 @@ start with `---` on line 1, have a `description:`, and close with `---`.
 |---|---|
 | `commands/` | 25 slash commands, one per hunt stage and class. |
 | `SKILL.md` | The router the skill loads. |
-| `AGENTS.md` | The binding conduct contract: scope gate, evidence, safety rails. |
+| `AGENTS.md` | The conduct contract: scope gate, evidence, safety rails. |
 | `references/` | 26 deep documents. |
 | `workflows/` | 13 end-to-end playbooks. |
 | `checklists/` | 15 testable gates. |
-| `templates/` | Report templates for four platforms, PoC and CVSS sheets. |
+| `templates/` | Reports for four platforms, PoC and CVSS sheets. |
 | `prompts/` | 6 role prompts for sub-agents. |
 | `tools/` | 14 Python scripts, standard library only. |
 | `data/` | Severity matrix, paths, patterns, fingerprints, wordlists. |
@@ -162,10 +114,10 @@ start with `---` on line 1, have a `description:`, and close with `---`.
 ## Uninstall
 
 ```bash
-rm -rf .claude/commands .claude/skills/bug-bounty-workbench
-rm -rf .opencode/command .opencode/skill/bug-bounty-workbench
-rm -rf .cursor/commands .codex/prompts
+npx bug-bounty-workbench uninstall                        # project installs
+npx bug-bounty-workbench uninstall --global               # user-level installs
+npx bug-bounty-workbench uninstall --agent claude         # one agent only
 ```
 
-Nothing is installed outside those directories and the plugin cache your agent
-manages.
+Only files listed in the manifest are removed. Directories it created are removed
+when they end up empty.

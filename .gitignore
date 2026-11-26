@@ -28,6 +28,11 @@ collections.json
 .cursor/commands/
 .codex/prompts/
 
+# installer bookkeeping
+.bbw-manifest.json
+node_modules/
+package-lock.json
+
 .idea/
 .vscode/
 .DS_Store

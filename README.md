@@ -10,19 +10,34 @@ Works in Claude Code, OpenCode, Codex, Cursor, or any agent that can read a file
 
 ## Install
 
-Paste the block in [`PROMPT.md`](PROMPT.md) into your agent. It clones the
-repository, installs the commands for the agent it is running in, loads the
-method, and waits for a target.
-
-Or do it by hand:
+Into the agent you are running in — Node 18+, no dependencies:
 
 ```bash
-git clone https://github.com/briembra/bug-bounty-workbench
-cd bug-bounty-workbench
-python tools/sync_commands.py --target opencode   # or: claude, cursor, codex
+npx bug-bounty-workbench setup
 ```
 
-Per-agent detail, plugin installs, and uninstall: [`INSTALL.md`](INSTALL.md).
+It detects Claude Code, OpenCode, Cursor or Codex from the project markers or the
+process environment, writes the 25 commands and the method into that agent's
+directories, and prints the one command to run next. Nothing else is touched.
+
+From this repository, before or without an npm release:
+
+```bash
+npx github:briembra/bug-bounty-workbench setup
+```
+
+Other shapes:
+
+```bash
+npx bug-bounty-workbench setup --agent claude --global   # user-level dirs
+npx bug-bounty-workbench setup --dry-run                 # print the plan
+npx bug-bounty-workbench status                          # what is installed
+npx bug-bounty-workbench uninstall                       # remove what setup wrote
+```
+
+No Node? Paste the block in [`PROMPT.md`](PROMPT.md) and the agent installs
+itself. Per-agent detail, plugin installs and the Python path:
+[`INSTALL.md`](INSTALL.md).
 
 ---
 
