@@ -1,6 +1,27 @@
 # Changelog
 
-## 1.3.6 — 2026-11-26
+## 1.3.7 - 2026-11-27
+
+Namespace is not an object. Re-run before you write up.
+
+- `AGENTS.md` §4 gains the **scope-of-control rule**: a difference between two
+  hosts, tenants, namespaces or base paths is a namespace difference until a value
+  that cannot exist proves otherwise. One request decides it — send
+  `zzzz-does-not-exist-9911` through the same path. Answers like a real object →
+  get-or-create, no oracle, no bypass. Answers `404`/`create` → object-level guard.
+- Two corollaries recorded from a live engagement that produced a withdrawn High:
+  a control that varies by namespace is not an access control, and a get-or-create
+  endpoint leaks nothing about existence (an "N/N objects exist" result usually
+  means you minted N/N yourself).
+- **Re-run rule**: results decay. Before any write-up, re-run the three requests the
+  finding depends on in the current session and paste the fresh output. If a re-run
+  contradicts the note, mark it `RETRACTED` with the reason — never delete it
+  quietly.
+- `checklists/submission.md` gains a **Control level** gate between Validity and
+  Evidence, so the check happens before the report is written rather than after.
+- `SKILL.md` working rules state it once: prove the control guards the object.
+
+## 1.3.6 - 2026-11-26
 
 A dead target is a result, not a sentence.
 

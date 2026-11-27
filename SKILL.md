@@ -198,6 +198,10 @@ LOW by default. Hunt them only as a chained step.
   rate limits and gets your IP banned is a failed engagement.
 - **Two accounts, always.** Any authorization test needs a victim account you
   own. Never use another real user's data to prove IDOR — create the pair.
+- **Prove the control guards the object.** A `403` on one host and a `200` on
+  another is a namespace difference until a value that cannot exist behaves
+  differently. Send the fake id first; it decides whether you have a bypass or a
+  get-or-create.
 - **Respect production data.** If you land in real PII, capture the minimum
   (one record, redacted), stop, report. Do not enumerate.
 - **Write as you go.** Evidence in a file the moment you see it. Memory lies.

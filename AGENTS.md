@@ -135,6 +135,35 @@ users, or open test cases.
 
 Demo data is not a breach. Say so in the report; downgrade accordingly.
 
+**Scope-of-control rule.** Before calling anything an authorization bypass, prove
+the control you bypassed actually guards the *object*. A difference between two
+hosts, two tenants, two namespaces or two base paths is a **namespace** difference
+until a non-existent object proves otherwise.
+
+The test is one request: send a value that cannot exist (`zzzz-does-not-exist-9911`,
+`ffffffff-...`, a room that was never created) through the same path.
+
+- **It answers like a real object** → the endpoint is a get-or-create or a wildcard
+  handler. You have no oracle, no bypass, and no leak. The earlier `403` vs `200` was
+  the namespace, not the guard.
+- **It answers differently** (`404`, `not found`, `create`) → the control is
+  object-level and you can talk about a bypass.
+
+Two corollaries that have both cost a real report:
+
+- **A control that varies by namespace is not an access control.** "Locked here, open
+  there" usually means "anonymous is refused wholesale here", not "the object is
+  protected there".
+- **Get-or-create endpoints leak nothing about existence.** If every name returns a
+  stable id, an "N/N rooms exist" result means N/N were minted by you.
+
+**Re-run rule.** A result carries forward only while it is fresh. Before any
+write-up, re-run the three requests the finding depends on, in this session, and
+paste the new output. Findings assembled from earlier passes rot: endpoints get
+hardened, parameters change meaning, and a claim that was true on Tuesday is a
+retraction on Thursday. If a re-run contradicts the note, the note is wrong — mark
+it `RETRACTED` with the reason, do not quietly delete it.
+
 ---
 
 ## 5. Output discipline

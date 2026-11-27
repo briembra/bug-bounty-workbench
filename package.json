@@ -1,6 +1,6 @@
 {
   "name": "bug-bounty-workbench",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Authorized bug bounty hunting, installed into your agent. 25 slash commands, 26 references, 13 workflows, 15 checklists, stdlib-only tools. `npx bug-bounty-workbench setup`.",
   "license": "MIT",
   "type": "module",

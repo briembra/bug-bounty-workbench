@@ -15,6 +15,16 @@ Run top to bottom. If anything fails, fix it before submitting.
 - [ ] Not a known issue (changelog checked).
 - [ ] Not demo/seed data (emails, timestamps, ids checked).
 
+## Control level
+
+- [ ] The guard you bypassed protects the **object**, not the namespace/host/tenant
+      (sent a non-existent id through the same path and got a different answer).
+- [ ] Not a get-or-create endpoint: a value that cannot exist does not come back
+      looking real.
+- [ ] Every claim re-run **in this session** — the three requests the finding rests
+      on, pasted fresh, not carried over from an earlier pass.
+- [ ] Any claim a re-run contradicted is marked `RETRACTED` with the reason.
+
 ## Evidence
 
 - [ ] Exact request(s) captured.
