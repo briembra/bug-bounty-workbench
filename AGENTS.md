@@ -184,6 +184,39 @@ Stop the engagement and report status when:
 
 Stopping correctly is a professional behaviour, not a failure.
 
+### 6.1 Kill and pivot
+
+Grinding a dead target is the most common way a hunt consumes a week for nothing.
+When a target is finished, say so and move to the next one. Do not ask permission
+for that; the engagement continues either way.
+
+**Kill criteria — any one is enough to leave:**
+
+| Signal | Threshold |
+|---|---|
+| No signal on a class | 150 requests or 60 minutes on one class, zero anomalies |
+| Consecutive closed hypotheses | 3, each with a request/response that proves it closed |
+| Surface age | 0 (over 24 months, thousands of resolved reports) and nothing new in scope |
+| Payout dead | nothing paid in 90 days on a program that claims bounties |
+| Blocked | WAF or auth wall where the only way through breaks the rules |
+| Nothing to test | scope resolves to parked pages, 404s, or static marketing |
+
+**Then, in this order:**
+
+1. One line: `dead — <reason>` (which criterion fired). No essay.
+2. Append it to `engagements/<program>/dead.md`: asset, class tried, criterion,
+   date. This is why you do not repeat it next month.
+3. Take the next item from `engagements/shortlist.md` — newest surface first.
+4. If the shortlist is empty, return to selection (`/bbw-programs --fresh`) rather
+   than re-testing something already marked dead.
+
+**Never** re-run the same class on the same asset without a new hypothesis. A new
+hypothesis means new information — a new endpoint, a new role, a version change, a
+leaked key — not a different payload list.
+
+A dead target is not a failed hunt. It is a measurement: the map is now accurate,
+and the hour is better spent on an asset with forty reports than four thousand.
+
 ---
 
 ## 7. After a finding

@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.3.6 — 2026-11-26
+
+A dead target is a result, not a sentence.
+
+- `AGENTS.md` §6.1 **Kill and pivot**: explicit kill criteria (150 requests or 60
+  minutes on one class with no anomaly, three consecutive closed hypotheses,
+  surface age 0, nothing paid in 90 days, a WAF that can only be beaten by
+  breaking the rules, scope that resolves to nothing), then the order of
+  operations — one line `dead — <reason>`, log to `engagements/<program>/dead.md`,
+  next item from the shortlist, back to selection if the shortlist is empty.
+- Never re-run the same class on the same asset without new information; a new
+  payload list is not new information.
+- `/bbw-hunt` gains **Step 2.5** with the time box and the kill rule, so leaving is
+  arithmetic instead of a mood.
+- `SKILL.md` and `commands/README.md` state it once, for every command.
+
 ## 1.3.5 — 2026-11-26
 
 The standing check, everywhere.

@@ -64,6 +64,12 @@ wants to. This applies to every command, not just `/bbw-programs`: `/bbw-hunt`,
 `/bbw-scope`, `/bbw-recon`, a class command, or a target dropped into chat with no
 command at all.
 
+**And when it is dead, you leave.** One class on one asset gets 60 minutes or 150
+requests. No anomaly, three closed hypotheses, surface age 0, or a WAF that can
+only be beaten by breaking the rules — that is the end of that target, not the end
+of the hunt. Say `dead — <reason>` in one line, log it, take the next item from the
+shortlist. Full rules: [`AGENTS.md` §6.1](AGENTS.md#61-kill-and-pivot).
+
 ---
 
 ## How to talk

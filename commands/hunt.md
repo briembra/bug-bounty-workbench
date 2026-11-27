@@ -76,6 +76,21 @@ anything the program excludes, then take the top one and run its command:
 
 Do not run five classes in parallel. One to conclusion.
 
+## Step 2.5 — Give it a time box and a kill rule
+
+Set the budget before you start, so the decision to leave is arithmetic and not a
+mood:
+
+- One class on one asset: **60 minutes or 150 requests**, whichever comes first.
+- Leave when any of these fire: no anomaly in that budget, three hypotheses closed
+  in a row, surface age 0, nothing paid on the program in 90 days, a WAF where the
+  only way through breaks the rules.
+- On kill: one line `dead — <reason>`, append to `engagements/<program>/dead.md`,
+  take the next item from `engagements/shortlist.md` (newest surface first). Do not
+  ask permission, do not restart the same class without new information.
+
+Full rules: [`../AGENTS.md`](../AGENTS.md#61-kill-and-pivot).
+
 ## Step 3 — Prove (the only step that counts)
 
 - Two accounts, both yours. Victim object created by account B, read by A.

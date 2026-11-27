@@ -16,6 +16,11 @@ The long version goes in the file, not in the chat. Rules: [`../AGENTS.md`](../A
 newest in-scope asset. See [`../SKILL.md`](../SKILL.md#the-standing-check) and
 [`../references/01-program-selection.md`](../references/01-program-selection.md).
 
+**Abandoned is a result.** A class gets 60 minutes or 150 requests; if nothing
+moves, say `dead — <reason>`, log it in `engagements/<program>/dead.md`, and take
+the next item from the shortlist. Never re-run the same class on the same asset
+without new information. Rules: [`../AGENTS.md`](../AGENTS.md#61-kill-and-pivot).
+
 ---
 
 ## Start here
